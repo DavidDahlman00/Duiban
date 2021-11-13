@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "1080752554643",
+    "project_id": "duiban",
+    "storage_bucket": "duiban.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1080752554643:android:8e140e108b0077e1f14366",
+        "android_client_info": {
+          "package_name": "com.example.duiban"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1080752554643-112ugikv8jrd7bo2bsv889ldcpm5qadc.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.duiban",
+            "certificate_hash": "1e182e6d1ee6dffb08244359a82cf568f6d095cf"
+          }
+        },
+        {
+          "client_id": "1080752554643-trdg6s6on717903a272ahq9o49a4lagp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBzPI_y_ocySepax9qPWTY_dpX-5gd9VdI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1080752554643-trdg6s6on717903a272ahq9o49a4lagp.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
