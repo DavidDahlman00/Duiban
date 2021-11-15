@@ -29,13 +29,13 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Name" />
+                android:text="Email" />
 
             <EditText
-                android:id="@+id/logintextUsername"
+                android:id="@+id/logintextUseremail"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="textPersonName"
+                android:inputType="textEmailAddress"
                 android:text="" />
 
         </LinearLayout>
@@ -74,7 +74,12 @@
             </LinearLayout>
 
         </LinearLayout>
-
+        <TextView
+            android:id="@+id/loginError"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="#F44336"
+            android:text="" />
         <Button
             android:id="@+id/loginbutton"
             android:layout_width="wrap_content"
