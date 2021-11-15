@@ -79,9 +79,11 @@ class LoginActivity : AppCompatActivity() {
                     }
                     if (document != null && document.exists()){
                         val userdata = document.toObject(UserClass::class.java)
+                        Log.d("login", userdata.toString())
                         if(userdata != null){
                             DataManager.currentUser = userdata
                             Log.d("login", "got data ${DataManager.currentUser.id}")
+                            Log.d("login", "got data name ${DataManager.currentUser.name}")
                             loginError.text = ""
                             val intent = Intent(this, MainActivity::class.java)
                             intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
