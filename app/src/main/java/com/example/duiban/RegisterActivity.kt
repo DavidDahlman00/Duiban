@@ -2,6 +2,8 @@ package com.example.duiban
 
 import android.content.Intent
 import android.os.Bundle
+import android.text.method.HideReturnsTransformationMethod
+import android.text.method.PasswordTransformationMethod
 import android.util.Log
 import android.widget.EditText
 import android.widget.Toast
@@ -19,6 +21,7 @@ class RegisterActivity : AppCompatActivity() {
     lateinit var password: EditText
     var db = FirebaseFirestore.getInstance()
     val auth = FirebaseAuth.getInstance()
+    var showPassword = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,6 +30,18 @@ class RegisterActivity : AppCompatActivity() {
         email = findViewById(R.id.registertextEmail)
         userName = findViewById(R.id.registertextUsername)
         password = findViewById(R.id.registereditTextTextPassword)
+
+        imageeye.setOnClickListener {
+            if (showPassword){
+                imageeye.setImageResource(R.drawable.ic_baseline_remove_red_eye_24)
+                password.transformationMethod = PasswordTransformationMethod.getInstance()
+            }else{
+                imageeye.setImageResource(R.drawable.ic_baseline__eye_crossover)
+                password.transformationMethod = HideReturnsTransformationMethod.getInstance()
+
+            }
+            showPassword = !showPassword
+        }
 
         registercreatebutton.setOnClickListener {
           if(tryToRegister()){

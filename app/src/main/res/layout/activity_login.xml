@@ -53,12 +53,25 @@
                 android:layout_height="wrap_content"
                 android:text="Password" />
 
-            <EditText
-                android:id="@+id/editTextTextPassword"
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:inputType="textPassword" />
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:id="@+id/editTextTextPassword"
+                    android:layout_width="300dp"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:inputType="textPassword" />
+
+                <ImageView
+                    android:id="@+id/imagelogineye"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    app:srcCompat="@drawable/ic_baseline_remove_red_eye_24" />
+            </LinearLayout>
 
         </LinearLayout>
 
