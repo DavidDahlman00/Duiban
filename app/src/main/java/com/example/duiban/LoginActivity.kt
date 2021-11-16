@@ -27,10 +27,10 @@ class LoginActivity : AppCompatActivity() {
         password = findViewById(R.id.editTextTextPassword)
         imagelogineye.setOnClickListener {
             if (showPassword){
-                imagelogineye.setImageResource(R.drawable.ic_baseline_remove_red_eye_24)
+                imagelogineye.setImageResource(R.drawable.ic_baseline_eye)
                 password.transformationMethod = PasswordTransformationMethod.getInstance()
             }else{
-                imagelogineye.setImageResource(R.drawable.ic_baseline__eye_crossover)
+                imagelogineye.setImageResource(R.drawable.ic_baseline_visibility_off_24)
                 password.transformationMethod = HideReturnsTransformationMethod.getInstance()
 
             }

@@ -34,10 +34,10 @@ class RegisterActivity : AppCompatActivity() {
 
         imageeye.setOnClickListener {
             if (showPassword){
-                imageeye.setImageResource(R.drawable.ic_baseline_remove_red_eye_24)
+                imageeye.setImageResource(R.drawable.ic_baseline_eye)
                 password.transformationMethod = PasswordTransformationMethod.getInstance()
             }else{
-                imageeye.setImageResource(R.drawable.ic_baseline__eye_crossover)
+                imageeye.setImageResource(R.drawable.ic_baseline_visibility_off_24)
                 password.transformationMethod = HideReturnsTransformationMethod.getInstance()
 
             }
