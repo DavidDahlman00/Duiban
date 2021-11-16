@@ -16,7 +16,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        switchFragment(contactFragment)
+        switchFragment(homeFragment)
         main_navigation_bar.setOnItemSelectedListener { item ->
             when (item.itemId) {
                 R.id.contact_link -> switchFragment(contactFragment)

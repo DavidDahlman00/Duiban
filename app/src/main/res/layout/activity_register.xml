@@ -19,6 +19,7 @@
             android:layout_marginTop="30dp"
             app:srcCompat="@drawable/ic_launcher_background" />
 
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -27,21 +28,16 @@
             android:orientation="vertical">
 
             <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Name" />
+
+            <EditText
                 android:id="@+id/registertextUsername"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Username" />
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="Name" />
-            </com.google.android.material.textfield.TextInputLayout>
-
+                android:inputType="textPersonName"
+                android:text="" />
         </LinearLayout>
 
         <LinearLayout
@@ -52,20 +48,17 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/registertextEmail"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Email" />
 
-            <com.google.android.material.textfield.TextInputLayout
+            <EditText
+                android:id="@+id/registertextEmail"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="wrap_content"
+                android:text=" "
+                android:inputType="textEmailAddress" />
 
-                <com.google.android.material.textfield.TextInputEditText
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="Email" />
-            </com.google.android.material.textfield.TextInputLayout>
 
         </LinearLayout>
 
@@ -77,20 +70,37 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/registertextPassword"
+
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Password" />
 
-            <EditText
-                android:id="@+id/registereditTextTextPassword"
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:inputType="textPassword" />
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:id="@+id/registereditTextTextPassword"
+                    android:layout_width="300dp"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:inputType="textPassword" />
+
+                <ImageView
+                    android:id="@+id/imageeye"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:srcCompat="@drawable/ic_baseline_eye" />
+            </LinearLayout>
 
         </LinearLayout>
-
+        <TextView
+            android:id="@+id/errorRegister"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="#F44336"
+            android:text="" />
         <Button
             android:id="@+id/registercreatebutton"
             android:layout_width="wrap_content"
