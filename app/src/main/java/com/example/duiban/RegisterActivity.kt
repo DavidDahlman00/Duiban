@@ -10,10 +10,10 @@ import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.duiban.models.DataManager
+import com.example.duiban.models.MessageClass
 import com.example.duiban.models.UserClass
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
-
 import kotlinx.android.synthetic.main.activity_register.*
 
 class RegisterActivity : AppCompatActivity() {
@@ -91,12 +91,18 @@ class RegisterActivity : AppCompatActivity() {
                 val newUser =
                     UserClass(id = userID, name = username, email = email, password = password)
                 DataManager.currentUser = newUser
+
                 db.collection("Users").document(userID).set(newUser)
                     .addOnCompleteListener {
                         Log.d("!!!", "$username successfully registerd")
+
+
                     }.addOnFailureListener {
                         Log.d("!!!", "failed to registerd")
                     }
+
+
+
                 val intent = Intent(this, MainActivity::class.java)
                 intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
                 intent.putExtra("user_id", userID)
