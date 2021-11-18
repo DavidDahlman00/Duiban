@@ -17,6 +17,7 @@ class ChatActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_chat)
 
+        val sendToId: String = intent.getStringExtra("friendId")!!
 
 
         go_back_button.setOnClickListener {
@@ -26,12 +27,14 @@ class ChatActivity : AppCompatActivity() {
         send_message_button.setOnClickListener {
             testtext.text = message_textfield.text
 
-            val sendTo: String = intent.getStringExtra("friendId")!!
+
+            val sendToName: String = intent.getStringExtra("friendName")!!
             val message: String =  message_textfield.text.toString()
             val currentTime: Long = System.currentTimeMillis()
 
-            val messageObject = MessageClass(DataManager.currentUser.id, sendTo, message, currentTime)
-            db.collection("Messages").document(sendTo).
+            val messageObject = MessageClass(DataManager.currentUser.id, sendToId, sendToName, DataManager.currentUser.name,
+                message, currentTime)
+            db.collection("Messages").document(sendToId).
             collection("ListOfMessages").document().set(messageObject)
                 .addOnCompleteListener {
 

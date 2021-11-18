@@ -7,10 +7,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.example.duiban.ChatActivity
-import com.example.duiban.MainActivity
 import com.example.duiban.R
 import com.example.duiban.models.DataManager
 
@@ -27,7 +25,14 @@ class ContactListAdapter: RecyclerView.Adapter<ContactListAdapter.ViewHolder>() 
     override fun onBindViewHolder(holder: ContactListAdapter.ViewHolder, position: Int) {
         holder.itemImage.setImageResource(R.drawable.ic_launcher_foreground)
         holder.itemName.text = DataManager.usersList[position].name
-        holder.itemMessage.text = "Sven has accepted you as friend"
+        var message = ""
+        if(DataManager.messageList.filter { (it.idFrom == DataManager.usersList[position].id) or
+                   (it.idTo == DataManager.usersList[position].id)}.size > 0){
+          message = DataManager.messageList.filter { (it.idFrom == DataManager.usersList[position].id) or
+                   (it.idTo == DataManager.usersList[position].id) }.sortedBy { it.time }[0].message.toString()
+       }
+
+        holder.itemMessage.text = message
 
     }
 

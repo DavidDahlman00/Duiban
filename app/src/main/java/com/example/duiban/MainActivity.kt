@@ -8,6 +8,7 @@ import com.example.duiban.fragment.ChatsFragment
 import com.example.duiban.fragment.ContactsFragment
 import com.example.duiban.fragment.HomeFragment
 import com.example.duiban.models.DataManager
+import com.example.duiban.models.MessageClass
 import com.example.duiban.models.UserClass
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.activity_main.*
@@ -22,6 +23,25 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         switchFragment(homeFragment)
+
+        db.collection("Messages").document(DataManager.currentUser.id).
+        collection("ListOfMessages").addSnapshotListener { value, error ->
+            //WHEN CHANGES IN COLLECTION HAS HAPPENED CLEAR LIST
+            DataManager.messageList.clear()
+            if (value != null) {
+                Log.d("message data length", value.size().toString())
+                for (document in value!!) {
+                    //ITEM TO OBJECT
+                    Log.d("message data", document.toString())
+                    val newItem = document.toObject(MessageClass::class.java)
+                    //ADD NEW ITEM TO LIST
+                    DataManager.messageList.add(newItem)
+                }
+            }
+
+        }
+
+
         main_navigation_bar.setOnItemSelectedListener { item ->
             when (item.itemId) {
                 R.id.contact_link -> switchFragment(contactFragment)
