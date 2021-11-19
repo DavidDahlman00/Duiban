@@ -1,12 +1,15 @@
 package com.example.duiban
 
+import android.annotation.SuppressLint
+import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.View
+import android.view.inputmethod.InputMethodManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.duiban.adapters.ChatAdapter
-import com.example.duiban.adapters.ContactListAdapter
 import com.example.duiban.models.DataManager
 import com.example.duiban.models.MessageClass
 import com.google.firebase.firestore.FirebaseFirestore
@@ -18,6 +21,7 @@ class ChatActivity : AppCompatActivity() {
     private lateinit var recyclerView: RecyclerView
     private var adapter: RecyclerView.Adapter<ChatAdapter.ViewHolder>? = null
 
+    @SuppressLint("NotifyDataSetChanged")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_chat)
@@ -32,7 +36,7 @@ class ChatActivity : AppCompatActivity() {
 
 
         send_message_button.setOnClickListener {
-            testtext.text = message_textfield.text
+
 
 
             val sendToName: String = intent.getStringExtra("friendName")!!
@@ -60,8 +64,15 @@ class ChatActivity : AppCompatActivity() {
                 }
             recyclerView.adapter!!.notifyDataSetChanged()
             message_textfield.setText("")
-
+            showSoftKeyboard(message_textfield)
         }
 
+    }
+
+    private fun showSoftKeyboard(view: View) {
+        if (view.requestFocus()) {
+            val inputMethodManager: InputMethodManager = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+            inputMethodManager.showSoftInput(view, InputMethodManager.SHOW_IMPLICIT)
+        }
     }
 }
