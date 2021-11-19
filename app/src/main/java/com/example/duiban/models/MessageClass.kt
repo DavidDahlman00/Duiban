@@ -1,4 +1,9 @@
 package com.example.duiban.models
 
-class MessageClass(var idList: MutableList<String>, var message: String) {
+class MessageClass(val idFrom: String = "",
+                   val idTo: String = "",
+                   val nameFrom: String = "",
+                   val nameTo: String = "",
+                   val message: String = "",
+                   val time: Long = 0) {
 }
