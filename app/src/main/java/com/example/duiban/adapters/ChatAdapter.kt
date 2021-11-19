@@ -6,23 +6,26 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.duiban.R
+import com.example.duiban.models.DataManager
 
-class ChatAdapter: RecyclerView.Adapter<ChatAdapter.ViewHolder>()  {
+class ChatAdapter(val friendId: String): RecyclerView.Adapter<ChatAdapter.ViewHolder>()  {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ChatAdapter.ViewHolder {
         val v = LayoutInflater.from(parent.context).inflate(R.layout.message_item, parent, false)
         return ViewHolder(v)
     }
 
     override fun onBindViewHolder(holder: ChatAdapter.ViewHolder, position: Int) {
-        TODO("Not yet implemented")
+        holder.itemName.text = DataManager.messageList.filter { (it.idFrom == friendId) or (it.idTo == friendId)}[position].nameFrom
+        holder.itemMessage.text = DataManager.messageList.filter { (it.idFrom == friendId) or (it.idTo == friendId)}[position].message
     }
 
     override fun getItemCount(): Int {
-        TODO("Not yet implemented")
+        return DataManager.messageList.filter { (it.idFrom == friendId) or
+                (it.idTo == friendId)}.size
     }
 
     inner class ViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
-        var itemName: TextView = itemView.findViewById(R.id.contactTextName)
-        var itemMessage: TextView = itemView.findViewById(R.id.contactTextMessage)
+        var itemName: TextView = itemView.findViewById(R.id.message_sender)
+        var itemMessage: TextView = itemView.findViewById(R.id.message_text)
     }
 }
