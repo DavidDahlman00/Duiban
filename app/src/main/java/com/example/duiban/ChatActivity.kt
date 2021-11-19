@@ -12,7 +12,6 @@ import com.example.duiban.models.MessageClass
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.activity_chat.*
 
-
 class ChatActivity : AppCompatActivity() {
 
     private var db = FirebaseFirestore.getInstance()
@@ -22,6 +21,7 @@ class ChatActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_chat)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         val sendToId: String = intent.getStringExtra("friendId")!!
 
@@ -30,10 +30,6 @@ class ChatActivity : AppCompatActivity() {
         adapter = ChatAdapter(sendToId)
         recyclerView.adapter = adapter
 
-
-        go_back_button.setOnClickListener {
-            finish()
-        }
 
         send_message_button.setOnClickListener {
             testtext.text = message_textfield.text
@@ -64,6 +60,7 @@ class ChatActivity : AppCompatActivity() {
                 }
             recyclerView.adapter!!.notifyDataSetChanged()
             message_textfield.setText("")
+
         }
 
     }

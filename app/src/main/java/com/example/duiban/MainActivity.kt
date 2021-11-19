@@ -45,7 +45,7 @@ class MainActivity : AppCompatActivity() {
         main_navigation_bar.setOnItemSelectedListener { item ->
             when (item.itemId) {
                 R.id.contact_link -> switchFragment(contactFragment)
-                R.id.chat_link -> switchFragment(chatFragment)
+                R.id.chat_go_back_link -> switchFragment(chatFragment)
                 R.id.home_link -> switchFragment(homeFragment)
             }
             true

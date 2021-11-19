@@ -11,6 +11,7 @@
         android:theme="@style/Theme.Duiban">
         <activity
             android:name=".ChatActivity"
+            android:parentActivityName=".MainActivity"
             android:exported="false" />
         <activity
             android:name=".RegisterActivity"
