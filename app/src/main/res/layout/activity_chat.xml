@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".ChatActivity"
+    android:background="@drawable/costum_app_background"
     app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
 
 
@@ -13,21 +14,10 @@
         android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@drawable/costum_app_background"
         android:orientation="vertical"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout2">
 
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/go_back_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="top|left"
-            android:layout_margin="16dp"
-            android:clickable="true"
-            android:scaleType="centerCrop"
-            app:fabSize="normal"
-            app:layout_constraintBaseline_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:srcCompat="@drawable/ic_baseline_arrow_back_24" />
 
         <HorizontalScrollView
             android:layout_width="match_parent"
@@ -49,38 +39,30 @@
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/linearLayout2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@color/browser_actions_divider_color"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent">
 
-        <com.google.android.material.textfield.TextInputLayout
+        <EditText
+            android:id="@+id/message_textfield"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content"
+            android:inputType="textLongMessage"
+            android:text="edit" />
 
-            <TextView
-                android:id="@+id/testtext"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="TextView" />
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/message_textfield"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="hint" />
-
-            <Button
-                android:id="@+id/send_message_button"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="right"
-                android:layout_marginRight="20dp"
-                android:layout_weight="1"
-                android:gravity="right"
-                android:text="Send" />
-        </com.google.android.material.textfield.TextInputLayout>
+        <Button
+            android:id="@+id/send_message_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:layout_marginEnd="20dp"
+            android:layout_weight="1"
+            android:gravity="right"
+            android:text="Send" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
