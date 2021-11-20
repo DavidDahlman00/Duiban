@@ -49,22 +49,22 @@ class ChatActivity : AppCompatActivity() {
             db.collection("Messages").document(sendToId).
             collection("ListOfMessages").document().set(messageObject)
                 .addOnCompleteListener {
+                    db.collection("Messages").document(DataManager.currentUser.id).
+                    collection("ListOfMessages").document().set(messageObject)
+                        .addOnCompleteListener {
+                            recyclerView.adapter!!.notifyDataSetChanged()
+                            message_textfield.setText("")
+                            showSoftKeyboard(message_textfield)
 
+                        }.addOnFailureListener {
+                            Log.d("!!!", "failed to registerd")
+                        }
 
                 }.addOnFailureListener {
                     Log.d("!!!", "failed to registerd")
                 }
-            db.collection("Messages").document(DataManager.currentUser.id).
-            collection("ListOfMessages").document().set(messageObject)
-                .addOnCompleteListener {
 
 
-                }.addOnFailureListener {
-                    Log.d("!!!", "failed to registerd")
-                }
-            recyclerView.adapter!!.notifyDataSetChanged()
-            message_textfield.setText("")
-            showSoftKeyboard(message_textfield)
         }
 
     }

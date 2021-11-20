@@ -10,6 +10,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@drawable/costum_app_background"
         android:orientation="vertical">
 
         <ImageView
@@ -36,6 +37,8 @@
                 android:id="@+id/registertextUsername"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@drawable/costum_button_background"
+                android:layout_marginHorizontal="20dp"
                 android:inputType="textPersonName"
                 android:text="" />
         </LinearLayout>
@@ -57,6 +60,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text=" "
+                android:background="@drawable/costum_button_background"
+                android:layout_marginHorizontal="20dp"
                 android:inputType="textEmailAddress" />
 
 
@@ -85,6 +90,8 @@
                     android:layout_width="300dp"
                     android:layout_height="wrap_content"
                     android:ems="10"
+                    android:background="@drawable/costum_button_background"
+                   android:layout_marginLeft="20dp"
                     android:inputType="textPassword" />
 
                 <ImageView
@@ -107,6 +114,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginVertical="30dp"
+            android:background="@drawable/costum_button_background"
             android:gravity="center|center_horizontal"
             android:text="Login" />
 
@@ -115,6 +123,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
+            android:background="@drawable/costum_button_background"
             android:layout_marginVertical="20dp"
             android:text="Back" />
     </LinearLayout>
