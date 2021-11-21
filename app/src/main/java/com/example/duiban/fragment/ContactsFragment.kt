@@ -8,12 +8,13 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.duiban.R
-import com.example.duiban.adapters.ContactListAdapter
+import com.example.duiban.adapters.ChatListAdapter
+import com.example.duiban.adapters.ContactsAdapter
 
 
 class ContactsFragment : Fragment() {
     private lateinit var recyclerView: RecyclerView
-    private var adapter: RecyclerView.Adapter<ContactListAdapter.ViewHolder>? = null
+    private var adapter: RecyclerView.Adapter<ContactsAdapter.ViewHolder>? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,10 +26,12 @@ class ContactsFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val view =inflater.inflate(R.layout.fragment_contacts, container, false)
-        recyclerView = view.findViewById<RecyclerView>(R.id.contact_recyclerview)
+        recyclerView = view.findViewById<RecyclerView>(R.id.contacts_recyclervieew)
         recyclerView.layoutManager = LinearLayoutManager(activity)
-        adapter = ContactListAdapter()
+        adapter = ContactsAdapter()
         recyclerView.adapter = adapter
         return view
     }
+
+
 }

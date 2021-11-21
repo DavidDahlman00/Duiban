@@ -4,8 +4,8 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
-import com.example.duiban.fragment.ChatsFragment
 import com.example.duiban.fragment.ContactsFragment
+import com.example.duiban.fragment.ChatListFragment
 import com.example.duiban.fragment.HomeFragment
 import com.example.duiban.models.DataManager
 import com.example.duiban.models.MessageClass
@@ -15,14 +15,14 @@ import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
     private var db = FirebaseFirestore.getInstance()
+    private val chatListFragment = ChatListFragment()
     private val contactFragment = ContactsFragment()
-    private val chatFragment = ChatsFragment()
     private val homeFragment = HomeFragment()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        switchFragment(homeFragment)
+        switchFragment(chatListFragment)
 
         db.collection("Messages").document(DataManager.currentUser.id).
         collection("ListOfMessages").addSnapshotListener { value, error ->
@@ -39,16 +39,6 @@ class MainActivity : AppCompatActivity() {
                 }
             }
 
-        }
-
-
-        main_navigation_bar.setOnItemSelectedListener { item ->
-            when (item.itemId) {
-                R.id.contact_link -> switchFragment(contactFragment)
-                R.id.chat_go_back_link -> switchFragment(chatFragment)
-                R.id.home_link -> switchFragment(homeFragment)
-            }
-            true
         }
 
         db.collection("Users").addSnapshotListener { value, error ->
@@ -69,6 +59,17 @@ class MainActivity : AppCompatActivity() {
 
             }
         }
+
+        main_navigation_bar.setOnItemSelectedListener { item ->
+            when (item.itemId) {
+                R.id.chat_list_link -> switchFragment(chatListFragment)
+                R.id.contact_link -> switchFragment(contactFragment)
+                R.id.home_link -> switchFragment(homeFragment)
+            }
+            true
+        }
+
+
     }
 
     private fun switchFragment(fragment: Fragment) {

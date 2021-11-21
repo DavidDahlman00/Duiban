@@ -12,17 +12,17 @@ import com.example.duiban.ChatActivity
 import com.example.duiban.R
 import com.example.duiban.models.DataManager
 
-class ContactListAdapter: RecyclerView.Adapter<ContactListAdapter.ViewHolder>() {
+class ChatListAdapter: RecyclerView.Adapter<ChatListAdapter.ViewHolder>() {
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
-    ): ContactListAdapter.ViewHolder {
-       val v = LayoutInflater.from(parent.context).inflate(R.layout.contact_item, parent, false)
+    ): ChatListAdapter.ViewHolder {
+       val v = LayoutInflater.from(parent.context).inflate(R.layout.item_chatlist, parent, false)
         return ViewHolder(v)
     }
 
     @SuppressLint("SetTextI18n")
-    override fun onBindViewHolder(holder: ContactListAdapter.ViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: ChatListAdapter.ViewHolder, position: Int) {
         holder.itemImage.setImageResource(R.drawable.ic_launcher_foreground)
         holder.itemName.text = DataManager.usersList[position].name
         var message = ""

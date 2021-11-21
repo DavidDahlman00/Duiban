@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:id="@+id/chat_go_back_link"
+        android:id="@+id/chat_list_link"
         android:icon="@drawable/ic_baseline_chat_bubble_24"
         android:title="Chats" />
     <item

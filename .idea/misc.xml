@@ -19,9 +19,13 @@
         <entry key="..\:/Users/david/StudioProjects/Duiban/app/src/main/res/layout/activity_start.xml" value="0.12047101449275362" />
         <entry key="..\:/Users/david/StudioProjects/Duiban/app/src/main/res/layout/contact_item.xml" value="0.12001811594202899" />
         <entry key="..\:/Users/david/StudioProjects/Duiban/app/src/main/res/layout/create_message_bottomsheet.xml" value="0.24139492753623187" />
+        <entry key="..\:/Users/david/StudioProjects/Duiban/app/src/main/res/layout/fragment_chatlist.xml" value="0.13958333333333334" />
         <entry key="..\:/Users/david/StudioProjects/Duiban/app/src/main/res/layout/fragment_chats.xml" value="0.25" />
         <entry key="..\:/Users/david/StudioProjects/Duiban/app/src/main/res/layout/fragment_contacts.xml" value="0.12001811594202899" />
         <entry key="..\:/Users/david/StudioProjects/Duiban/app/src/main/res/layout/fragment_home.xml" value="0.25407608695652173" />
+        <entry key="..\:/Users/david/StudioProjects/Duiban/app/src/main/res/layout/item_chatlist.xml" value="0.13958333333333334" />
+        <entry key="..\:/Users/david/StudioProjects/Duiban/app/src/main/res/layout/item_contact.xml" value="0.2269021739130435" />
+        <entry key="..\:/Users/david/StudioProjects/Duiban/app/src/main/res/layout/item_message.xml" value="0.13958333333333334" />
         <entry key="..\:/Users/david/StudioProjects/Duiban/app/src/main/res/layout/message_item.xml" value="0.264" />
         <entry key="..\:/Users/david/StudioProjects/Duiban/app/src/main/res/menu/chat_menu.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/david/StudioProjects/Duiban/app/src/main/res/menu/main_menu.xml" value="0.25416666666666665" />
