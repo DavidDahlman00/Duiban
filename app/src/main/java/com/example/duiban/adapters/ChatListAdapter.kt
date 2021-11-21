@@ -24,12 +24,12 @@ class ChatListAdapter: RecyclerView.Adapter<ChatListAdapter.ViewHolder>() {
     @SuppressLint("SetTextI18n")
     override fun onBindViewHolder(holder: ChatListAdapter.ViewHolder, position: Int) {
         holder.itemImage.setImageResource(R.drawable.ic_launcher_foreground)
-        holder.itemName.text = DataManager.usersList[position].name
+        holder.itemName.text = DataManager.friendsList[position].name
         var message = ""
-        if(DataManager.messageList.filter { (it.idFrom == DataManager.usersList[position].id) or
-                   (it.idTo == DataManager.usersList[position].id)}.size > 0){
-          message = DataManager.messageList.filter { (it.idFrom == DataManager.usersList[position].id) or
-                   (it.idTo == DataManager.usersList[position].id) }.sortedBy { it.time }[0].message.toString()
+        if(DataManager.messageList.filter { (it.idFrom == DataManager.friendsList[position].id) or
+                   (it.idTo == DataManager.friendsList[position].id)}.size > 0){
+          message = DataManager.messageList.filter { (it.idFrom == DataManager.friendsList[position].id) or
+                   (it.idTo == DataManager.friendsList[position].id) }.sortedBy { it.time }[0].message
        }
 
         holder.itemMessage.text = message
@@ -37,7 +37,7 @@ class ChatListAdapter: RecyclerView.Adapter<ChatListAdapter.ViewHolder>() {
     }
 
     override fun getItemCount(): Int {
-        return DataManager.usersList.size
+        return DataManager.friendsList.size
     }
 
     inner class ViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
@@ -49,8 +49,8 @@ class ChatListAdapter: RecyclerView.Adapter<ChatListAdapter.ViewHolder>() {
         init {
             itemView.setOnClickListener {
                 val intent = Intent(itemView.context, ChatActivity::class.java)
-                intent.putExtra("friendId", DataManager.usersList[position].id)
-                intent.putExtra("friendName", DataManager.usersList[position].name)
+                intent.putExtra("friendId", DataManager.friendsList[position].id)
+                intent.putExtra("friendName", DataManager.friendsList[position].name)
                 itemView.context.startActivity(intent)
             }
         }

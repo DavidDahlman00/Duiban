@@ -16,6 +16,7 @@ class ContactsAdapter: RecyclerView.Adapter<ContactsAdapter.ViewHolder>() {
 
     override fun onBindViewHolder(holder: ContactsAdapter.ViewHolder, position: Int) {
         holder.itemName.text = "contact position $position"
+        holder.itemImage.setImageResource(R.drawable.oak_tree_silhouette)
     }
 
     override fun getItemCount(): Int {

@@ -22,11 +22,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        when(DataManager.mainActivityState) {
-            "chatListFragment" -> switchFragment(chatListFragment)
-            "contactFragment" -> switchFragment(contactFragment)
-            "homeFragment" -> switchFragment(homeFragment)
-        }
+
 
         db.collection("Messages").document(DataManager.currentUser.id).
         collection("ListOfMessages").addSnapshotListener { value, error ->
@@ -47,7 +43,7 @@ class MainActivity : AppCompatActivity() {
 
         db.collection("Users").addSnapshotListener { value, error ->
             //WHEN CHANGES IN COLLECTION HAS HAPPENED CLEAR LIST
-            DataManager.usersList.clear()
+            DataManager.friendsList.clear()
 
 
             for (document in value!!) {
@@ -56,12 +52,18 @@ class MainActivity : AppCompatActivity() {
                 val newItem = document.toObject(UserClass::class.java)
                 if (newItem.id != DataManager.currentUser.id){
                     //ADD NEW ITEM TO LIST
-                    DataManager.usersList.add(newItem)
+                    DataManager.friendsList.add(newItem)
                     Log.d("test get data","got data")
                 }
 
 
             }
+        }
+
+        when(DataManager.mainActivityState) {
+            "chatListFragment" -> switchFragment(chatListFragment)
+            "contactFragment" -> switchFragment(contactFragment)
+            "homeFragment" -> switchFragment(homeFragment)
         }
 
         main_navigation_bar.setOnItemSelectedListener { item ->
