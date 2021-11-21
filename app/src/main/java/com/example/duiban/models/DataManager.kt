@@ -5,4 +5,5 @@ object DataManager {
     var friendsList: MutableList<UserClass> = mutableListOf()
     var usersList:  MutableList<UserClass> = mutableListOf()
     var messageList: MutableList<MessageClass> = mutableListOf()
+    var mainActivityState: String = "ChatListFragment"
 }

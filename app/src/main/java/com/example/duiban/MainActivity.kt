@@ -22,7 +22,11 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        switchFragment(chatListFragment)
+        when(DataManager.mainActivityState) {
+            "chatListFragment" -> switchFragment(chatListFragment)
+            "contactFragment" -> switchFragment(contactFragment)
+            "homeFragment" -> switchFragment(homeFragment)
+        }
 
         db.collection("Messages").document(DataManager.currentUser.id).
         collection("ListOfMessages").addSnapshotListener { value, error ->
@@ -62,9 +66,18 @@ class MainActivity : AppCompatActivity() {
 
         main_navigation_bar.setOnItemSelectedListener { item ->
             when (item.itemId) {
-                R.id.chat_list_link -> switchFragment(chatListFragment)
-                R.id.contact_link -> switchFragment(contactFragment)
-                R.id.home_link -> switchFragment(homeFragment)
+                R.id.chat_list_link -> {
+                    switchFragment(chatListFragment)
+                    DataManager.mainActivityState = "chatListFragment"
+                }
+                R.id.contact_link -> {
+                    switchFragment(contactFragment)
+                    DataManager.mainActivityState = "contactFragment"
+                }
+                R.id.home_link -> {
+                    switchFragment(homeFragment)
+                    DataManager.mainActivityState = "homeFragment"
+                }
             }
             true
         }
