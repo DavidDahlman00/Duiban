@@ -63,6 +63,13 @@
                     android:gravity="center"
                     android:text="TextView" />
 
+                <TextView
+                    android:id="@+id/message_time"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="right"
+                    android:text="Time" />
+
             </LinearLayout>
 
         </androidx.cardview.widget.CardView>

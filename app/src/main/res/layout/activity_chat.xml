@@ -4,31 +4,33 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context=".ChatActivity"
     android:background="@drawable/costum_app_background"
-    app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
+    android:orientation="vertical"
+    app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"
+    tools:context=".ChatActivity">
 
 
     <LinearLayout
         android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
         android:background="@drawable/costum_app_background"
         android:orientation="vertical"
-        app:layout_constraintBottom_toTopOf="@+id/linearLayout2">
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout2"
+        app:layout_constraintTop_toTopOf="parent">
 
 
         <HorizontalScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@drawable/costum_app_background"/>
+            android:background="@drawable/costum_app_background" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/chatRecycler"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@drawable/costum_app_background"/>
+            android:background="@drawable/costum_app_background" />
 
 
     </LinearLayout>

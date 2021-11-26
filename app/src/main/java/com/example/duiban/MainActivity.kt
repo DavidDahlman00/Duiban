@@ -27,16 +27,21 @@ class MainActivity : AppCompatActivity() {
         db.collection("Messages").document(DataManager.currentUser.id).
         collection("ListOfMessages").addSnapshotListener { value, error ->
             //WHEN CHANGES IN COLLECTION HAS HAPPENED CLEAR LIST
-            DataManager.messageList.clear()
+
+            //val newMessageList :  MutableList<MessageClass> = mutableListOf()
             if (value != null) {
                 Log.d("message data length", value.size().toString())
+                DataManager.messageList.clear()
                 for (document in value!!) {
                     //ITEM TO OBJECT
                     Log.d("message data", document.toString())
                     val newItem = document.toObject(MessageClass::class.java)
                     //ADD NEW ITEM TO LIST
+                  //  DataManager.messageList.add(newItem)
                     DataManager.messageList.add(newItem)
                 }
+
+
             }
 
         }
