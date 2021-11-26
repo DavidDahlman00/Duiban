@@ -29,7 +29,7 @@ class ChatListAdapter: RecyclerView.Adapter<ChatListAdapter.ViewHolder>() {
         if(DataManager.messageList.filter { (it.idFrom == DataManager.friendsList[position].id) or
                    (it.idTo == DataManager.friendsList[position].id)}.size > 0){
           message = DataManager.messageList.filter { (it.idFrom == DataManager.friendsList[position].id) or
-                   (it.idTo == DataManager.friendsList[position].id) }.sortedBy { it.time }[0].message
+                   (it.idTo == DataManager.friendsList[position].id) }.sortedByDescending { it.time }[0].message
        }
 
         holder.itemMessage.text = message

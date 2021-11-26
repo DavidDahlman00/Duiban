@@ -18,17 +18,17 @@ class ChatAdapter(val friendId: String): RecyclerView.Adapter<ChatAdapter.ViewHo
 
     override fun onBindViewHolder(holder: ChatAdapter.ViewHolder, position: Int) {
 
-        if(DataManager.messageList.filter { (it.idFrom == friendId) or (it.idTo == friendId)}.sortedByDescending { it.time } [position].nameFrom == friendId){
+        if(DataManager.messageList.filter { (it.idFrom == friendId) or (it.idTo == friendId)}.sortedBy { it.time } [position].nameFrom == friendId){
             holder.itemNameYou.text = ""
             holder.itemNameFriend.text = DataManager.messageList.
-            filter { (it.idFrom == friendId) or (it.idTo == friendId)}.sortedByDescending { it.time } [position].nameFrom
+            filter { (it.idFrom == friendId) or (it.idTo == friendId)}.sortedBy{ it.time } [position].nameFrom
         }else{
             holder.itemNameYou.text = DataManager.messageList.
-            filter { (it.idFrom == friendId) or (it.idTo == friendId)}.sortedByDescending { it.time } [position].nameFrom
+            filter { (it.idFrom == friendId) or (it.idTo == friendId)}.sortedBy { it.time } [position].nameFrom
             holder.itemNameFriend.text = ""
         }
         //holder.itemNameYou.text = DataManager.messageList.filter { (it.idFrom == friendId) or (it.idTo == friendId)}[position].nameFrom
-    val thisMessage = DataManager.messageList.filter { (it.idFrom == friendId) or (it.idTo == friendId)}.sortedByDescending { it.time } [position]
+    val thisMessage = DataManager.messageList.filter { (it.idFrom == friendId) or (it.idTo == friendId)}.sortedBy { it.time } [position]
         holder.itemMessage.text = thisMessage.message
 
         holder.itemTime.text = thisMessage.getDateTime(thisMessage.time)

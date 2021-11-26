@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.view.inputmethod.InputMethodManager
+import androidx.core.view.size
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.duiban.adapters.ChatAdapter
@@ -33,7 +34,7 @@ class ChatActivity : AppCompatActivity() {
         recyclerView.layoutManager = LinearLayoutManager(this)
         adapter = ChatAdapter(sendToId)
         recyclerView.adapter = adapter
-
+        recyclerView.smoothScrollToPosition(DataManager.messageList.filter { (it.idFrom == sendToId) or (it.idTo == sendToId)}.size);
 
         send_message_button.setOnClickListener {
 

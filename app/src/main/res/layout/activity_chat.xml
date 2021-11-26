@@ -15,6 +15,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
+        android:layout_marginBottom="100dp"
         android:background="@drawable/costum_app_background"
         android:orientation="vertical"
         app:layout_constraintBottom_toTopOf="@+id/linearLayout2"
@@ -47,8 +48,8 @@
             android:id="@+id/message_textfield"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="textLongMessage"
-            android:text="edit" />
+            android:hint="message"
+            android:inputType="textLongMessage" />
 
 
         <Button
