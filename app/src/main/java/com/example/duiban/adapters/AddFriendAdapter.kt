@@ -16,12 +16,12 @@ class AddFriendAdapter: RecyclerView.Adapter<AddFriendAdapter.ViewHolder>() {
     }
 
     override fun onBindViewHolder(holder: AddFriendAdapter.ViewHolder, position: Int) {
-        holder.itemName.text = "contact position $position"
+        holder.itemName.text = DataManager.usersList2[position].name
         holder.itemImage.setImageResource(R.drawable.oak_tree_silhouette)
     }
 
     override fun getItemCount(): Int {
-        return DataManager.usersList.size
+        return DataManager.usersList2.size
     }
 
     inner class ViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){

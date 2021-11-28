@@ -8,6 +8,7 @@ import com.example.duiban.fragment.ContactsFragment
 import com.example.duiban.fragment.ChatListFragment
 import com.example.duiban.fragment.HomeFragment
 import com.example.duiban.models.DataManager
+import com.example.duiban.models.FriendClass
 import com.example.duiban.models.MessageClass
 import com.example.duiban.models.UserClass
 import com.google.firebase.firestore.FirebaseFirestore
@@ -60,6 +61,25 @@ class MainActivity : AppCompatActivity() {
                     DataManager.friendsList.add(newItem)
                     Log.d("test get data","got data")
                 }
+
+
+            }
+        }
+
+        db.collection("Friends").addSnapshotListener { value, error ->
+            //WHEN CHANGES IN COLLECTION HAS HAPPENED CLEAR LIST
+            DataManager.friendsList2.clear()
+
+
+            for (document in value!!) {
+                //ITEM TO OBJECT
+
+                val newItem = document.toObject(FriendClass::class.java)
+
+                    //ADD NEW ITEM TO LIST
+                    DataManager.friendsList2.add(newItem)
+                    Log.d("test get data","got data")
+
 
 
             }
