@@ -38,7 +38,7 @@ class AddFriendActivity : AppCompatActivity() {
                 //ITEM TO OBJECT
 
                 val newItem = document.toObject(UserClass::class.java)
-                if (newItem.id != DataManager.currentUser.id){
+                if ((newItem.id != DataManager.currentUser.id) && (!DataManager.friendsList2.any { it.id == newItem.id })){
                     //ADD NEW ITEM TO LIST
                     DataManager.usersList.add(newItem)
                     DataManager.usersList2.add(newItem)

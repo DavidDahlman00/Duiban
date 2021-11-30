@@ -10,9 +10,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Duiban">
         <activity
+            android:name=".SendFriendRequestActivity"
+            android:exported="false"
+            android:parentActivityName=".AddFriendActivity"/>
+        <activity
             android:name=".AddFriendActivity"
             android:exported="false"
-            android:parentActivityName=".MainActivity"/>
+            android:parentActivityName=".MainActivity" />
         <activity
             android:name=".ChatActivity"
             android:exported="false"
