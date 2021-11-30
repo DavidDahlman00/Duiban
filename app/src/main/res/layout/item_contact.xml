@@ -6,54 +6,81 @@
     android:layout_height="wrap_content">
 
     <LinearLayout
+        android:id="@+id/contact_list_item"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:background="#A8A7A7"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/imageContact"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center_vertical"
+            android:layout_marginVertical="10dp"
+            android:layout_weight="1"
+            tools:srcCompat="@tools:sample/avatars" />
 
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal">
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#A8A7A7"
+            android:orientation="vertical">
 
-            <ImageView
-                android:id="@+id/imageContact"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:layout_weight="1"
-                tools:srcCompat="@tools:sample/avatars" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
 
-            <TextView
-                android:id="@+id/textNameContactList"
-                android:layout_width="wrap_content"
-                android:layout_height="40dp"
-                android:layout_gravity="clip_vertical|center_horizontal"
-                android:layout_marginTop="20dp"
-                android:layout_weight="1"
-                android:gravity="center|center_horizontal"
-                android:text="TextView" />
-        </LinearLayout>
+                <TextView
+                    android:id="@+id/textNameContactList"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:layout_gravity="clip_vertical|center_horizontal"
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_gravity="right|fill_horizontal"
-            android:orientation="horizontal">
+                    android:layout_weight="1"
+                    android:gravity="center|center_horizontal"
+                    android:text="TextView" />
+
+            </LinearLayout>
 
             <TextView
                 android:id="@+id/accepted_status_text"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="right"
+                android:gravity="center"
                 android:text="not accepted" />
 
-            <Button
-                android:id="@+id/accept_button"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="#373434"
-                android:gravity="right"
-                android:text="@string/accept" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="right|fill_horizontal"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/accept_friend_request_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="15dp"
+                    android:background="@drawable/costum_button_background"
+                    android:gravity="right"
+                    android:text="Accept"
+                    app:icon="@drawable/costum_button" />
+
+                <Button
+                    android:id="@+id/decline_friend_request_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="15dp"
+                    android:background="@drawable/costum_button_background"
+                    android:gravity="right"
+                    android:text="Decline"
+                    app:icon="@drawable/costum_button" />
+            </LinearLayout>
         </LinearLayout>
+
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

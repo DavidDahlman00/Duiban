@@ -69,8 +69,8 @@ class MainActivity : AppCompatActivity() {
         db.collection("Friends").document(DataManager.currentUser.id).
         collection("ListOfFriends").addSnapshotListener { value, error ->
             //WHEN CHANGES IN COLLECTION HAS HAPPENED CLEAR LIST
+            DataManager.friendsList.clear()
             DataManager.friendsList2.clear()
-
 
             for (document in value!!) {
                 //ITEM TO OBJECT
@@ -78,6 +78,7 @@ class MainActivity : AppCompatActivity() {
                 val newItem = document.toObject(FriendClass::class.java)
 
                     //ADD NEW ITEM TO LIST
+                    DataManager.friendsList.add(newItem)
                     DataManager.friendsList2.add(newItem)
                     Log.d("test get data","got data")
 

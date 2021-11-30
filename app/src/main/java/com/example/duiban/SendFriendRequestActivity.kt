@@ -35,10 +35,10 @@ class SendFriendRequestActivity : AppCompatActivity() {
               image = "", accepted_me = false, accepted_contact = true, time = currentTime)
 
             db.collection("Friends").document(DataManager.currentUser.id).
-            collection("ListOfFriends").document().set(friendRequestMe)
+            collection("ListOfFriends").document(sendToId).set(friendRequestMe)
                 .addOnCompleteListener {
                     db.collection("Friends").document(sendToId).
-                    collection("ListOfFriends").document().set(friendRequestTo)
+                    collection("ListOfFriends").document(DataManager.currentUser.id).set(friendRequestTo)
                         .addOnCompleteListener {
                         }.addOnFailureListener {
                             Log.d("!!!", "failed to registered friend request")
