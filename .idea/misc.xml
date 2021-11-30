@@ -41,6 +41,11 @@
         <entry key="..\:/androidP/MyApplication/Duiban/app/src/main/res/layout/fragment_contacts.xml" value="0.12708333333333333" />
         <entry key="..\:/androidP/MyApplication/Duiban/app/src/main/res/layout/fragment_home.xml" value="0.12708333333333333" />
         <entry key="..\:/androidP/MyApplication/Duiban/app/src/main/res/menu/main_menu.xml" value="0.12708333333333333" />
+        <entry key="app/src/main/res/layout/activity_add_friend.xml" value="0.11119554204660588" />
+        <entry key="app/src/main/res/layout/activity_profile.xml" value="0.11119554204660588" />
+        <entry key="app/src/main/res/layout/activity_register.xml" value="0.11119554204660588" />
+        <entry key="app/src/main/res/layout/activity_send_friend_request.xml" value="0.11119554204660588" />
+        <entry key="app/src/main/res/layout/fragment_home.xml" value="0.11119554204660588" />
       </map>
     </option>
   </component>
