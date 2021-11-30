@@ -8,25 +8,28 @@
 
 
     <LinearLayout
+        android:id="@+id/linearLayout3"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@drawable/costum_app_background"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="-114dp">
 
         <ImageView
             android:id="@+id/imageViewLogin"
             android:layout_width="202dp"
             android:layout_height="200dp"
+            android:layout_gravity="center_horizontal"
             android:layout_marginTop="50dp"
             android:background="@drawable/costum_app_background"
-            android:layout_gravity="center_horizontal"
             app:srcCompat="@drawable/oak_tree_silhouette" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginVertical="30dp"
             android:layout_marginHorizontal="10dp"
+            android:layout_marginVertical="30dp"
             android:orientation="vertical">
 
             <TextView
@@ -37,20 +40,22 @@
             <EditText
                 android:id="@+id/logintextUseremail"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="textEmailAddress"
-                android:padding="5dp"
-                android:background="@drawable/costum_button_background"
+                android:layout_height="48dp"
                 android:layout_marginHorizontal="20dp"
-                android:text="" />
+                android:background="@drawable/costum_button_background"
+                android:inputType="textEmailAddress"
+                android:minHeight="48dp"
+                android:padding="5dp"
+                android:text=""
+                android:textSize="24sp" />
 
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginVertical="30dp"
             android:layout_marginHorizontal="10dp"
+            android:layout_marginVertical="30dp"
             android:orientation="vertical">
 
             <TextView
@@ -67,12 +72,13 @@
                 <EditText
                     android:id="@+id/editTextTextPassword"
                     android:layout_width="320dp"
-                    android:layout_height="wrap_content"
-                    android:ems="10"
-                    android:padding="5dp"
-                    android:background="@drawable/costum_button_background"
+                    android:layout_height="48dp"
                     android:layout_marginLeft="20dp"
-                    android:inputType="textPassword" />
+                    android:background="@drawable/costum_button_background"
+                    android:ems="10"
+                    android:inputType="textPassword"
+                    android:padding="5dp"
+                    android:textSize="24sp" />
 
                 <ImageView
                     android:id="@+id/imagelogineye"
@@ -83,19 +89,20 @@
             </LinearLayout>
 
         </LinearLayout>
+
         <TextView
             android:id="@+id/loginError"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColor="#F44336"
-            android:text="" />
+            android:text=""
+            android:textColor="#F44336" />
 
         <Button
             android:id="@+id/loginbutton"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="48dp"
             android:layout_gravity="center"
-            android:layout_marginVertical="30dp"
+            android:layout_marginVertical="10dp"
             android:background="@drawable/costum_button_background"
             android:gravity="center|center_horizontal"
             android:text="Login"
@@ -104,11 +111,13 @@
         <Button
             android:id="@+id/registerbutton"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="48dp"
             android:layout_gravity="center"
-            android:layout_marginVertical="30dp"
+            android:layout_marginBottom="20dp"
             android:background="@drawable/costum_button_background"
             android:text="Register"
             app:icon="@drawable/costum_button" />
+
     </LinearLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -12,24 +12,24 @@ import com.example.duiban.ChatActivity
 import com.example.duiban.R
 import com.example.duiban.models.DataManager
 
-class ContactListAdapter: RecyclerView.Adapter<ContactListAdapter.ViewHolder>() {
+class ChatListAdapter: RecyclerView.Adapter<ChatListAdapter.ViewHolder>() {
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
-    ): ContactListAdapter.ViewHolder {
-       val v = LayoutInflater.from(parent.context).inflate(R.layout.contact_item, parent, false)
+    ): ChatListAdapter.ViewHolder {
+       val v = LayoutInflater.from(parent.context).inflate(R.layout.item_chatlist, parent, false)
         return ViewHolder(v)
     }
 
     @SuppressLint("SetTextI18n")
-    override fun onBindViewHolder(holder: ContactListAdapter.ViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: ChatListAdapter.ViewHolder, position: Int) {
         holder.itemImage.setImageResource(R.drawable.ic_launcher_foreground)
-        holder.itemName.text = DataManager.usersList[position].name
+        holder.itemName.text = DataManager.friendsList[position].name
         var message = ""
-        if(DataManager.messageList.filter { (it.idFrom == DataManager.usersList[position].id) or
-                   (it.idTo == DataManager.usersList[position].id)}.size > 0){
-          message = DataManager.messageList.filter { (it.idFrom == DataManager.usersList[position].id) or
-                   (it.idTo == DataManager.usersList[position].id) }.sortedBy { it.time }[0].message.toString()
+        if(DataManager.messageList.filter { (it.idFrom == DataManager.friendsList[position].id) or
+                   (it.idTo == DataManager.friendsList[position].id)}.size > 0){
+          message = DataManager.messageList.filter { (it.idFrom == DataManager.friendsList[position].id) or
+                   (it.idTo == DataManager.friendsList[position].id) }.sortedByDescending { it.time }[0].message
        }
 
         holder.itemMessage.text = message
@@ -37,7 +37,7 @@ class ContactListAdapter: RecyclerView.Adapter<ContactListAdapter.ViewHolder>() 
     }
 
     override fun getItemCount(): Int {
-        return DataManager.usersList.size
+        return DataManager.friendsList.size
     }
 
     inner class ViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
@@ -49,8 +49,8 @@ class ContactListAdapter: RecyclerView.Adapter<ContactListAdapter.ViewHolder>() 
         init {
             itemView.setOnClickListener {
                 val intent = Intent(itemView.context, ChatActivity::class.java)
-                intent.putExtra("friendId", DataManager.usersList[position].id)
-                intent.putExtra("friendName", DataManager.usersList[position].name)
+                intent.putExtra("friendId", DataManager.friendsList[position].id)
+                intent.putExtra("friendName", DataManager.friendsList[position].name)
                 itemView.context.startActivity(intent)
             }
         }

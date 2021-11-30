@@ -3,33 +3,29 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/costum_app_background"
+    android:orientation="vertical"
     tools:context=".fragment.ContactsFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-
-    <LinearLayout
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/contacts_recyclervieew"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@drawable/costum_app_background"
-        android:orientation="vertical">
+        android:layout_height="819dp" >
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
+    </androidx.recyclerview.widget.RecyclerView>
 
-            <TextView
-                android:id="@+id/textView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="TextView" />
-        </LinearLayout>
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/contact_recyclerview"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
-    </LinearLayout>
-
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/add_friend_floatingActionButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top|end"
+        android:layout_margin="16dp"
+        android:layout_marginEnd="16dp"
+        android:clickable="true"
+        android:scaleType="centerCrop"
+        app:fabSize="normal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@drawable/ic_baseline_add_24" />
 </FrameLayout>
