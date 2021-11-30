@@ -30,6 +30,8 @@ class ContactsAdapter: RecyclerView.Adapter<ContactsAdapter.ViewHolder>() {
         holder.itemName.text = DataManager.friendsList2[position].name
         holder.itemImage.setImageResource(R.drawable.oak_tree_silhouette)
 
+        holder.itemtesttext.text = DataManager.friendsList2[position].accepted_me.toString()
+
         holder.itemAcceptedStatus.text = DataManager.friendsList2[position].accepted_me.toString()
 
         if(DataManager.friendsList2[position].accepted_me && DataManager.friendsList2[position].accepted_contact){
@@ -63,6 +65,7 @@ class ContactsAdapter: RecyclerView.Adapter<ContactsAdapter.ViewHolder>() {
         var friendName: String = ""
         var friendId: String = ""
         var friendRequsetAccepted: Boolean = false
+        var itemtesttext: TextView = itemView.findViewById(R.id.textViewtest)
         var itemImage: ImageView = itemView.findViewById(R.id.imageContact)
         var itemName: TextView = itemView.findViewById(R.id.textNameContactList)
         var itemAcceptedStatus: TextView = itemView.findViewById(R.id.accepted_status_text)
@@ -107,8 +110,8 @@ class ContactsAdapter: RecyclerView.Adapter<ContactsAdapter.ViewHolder>() {
                                 db.collection("Friends").document(DataManager.currentUser.id).
                                 collection("ListOfFriends").document(sendToId)
                                     .set(friendRequestMe)
-                                db.collection("Friends").document(DataManager.currentUser.id).
-                                collection("ListOfFriends").document(sendToId)
+                                db.collection("Friends").document(sendToId).
+                                collection("ListOfFriends").document(DataManager.currentUser.id)
                                     .set(friendRequestTo)
                             }.addOnFailureListener {
                                 Log.d("!!!", "failed to registered friend request")
@@ -119,11 +122,12 @@ class ContactsAdapter: RecyclerView.Adapter<ContactsAdapter.ViewHolder>() {
             }
 
             itemDeclineButton.setOnClickListener {
+
                 db.collection("Friends").document(DataManager.currentUser.id).
-                collection("ListOfFriends").document().delete()
+                collection("ListOfFriends").document(friendId).delete()
                     .addOnCompleteListener {
                         db.collection("Friends").document(friendId).
-                        collection("ListOfFriends").document().delete()
+                        collection("ListOfFriends").document(DataManager.currentUser.id).delete()
                             .addOnCompleteListener {
                             }.addOnFailureListener {
                                 Log.d("!!!", "failed to registered friend request")

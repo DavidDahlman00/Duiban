@@ -12,6 +12,12 @@
         android:background="#A8A7A7"
         android:orientation="horizontal">
 
+        <TextView
+            android:id="@+id/textViewtest"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="TextView" />
+
         <ImageView
             android:id="@+id/imageContact"
             android:layout_width="40dp"

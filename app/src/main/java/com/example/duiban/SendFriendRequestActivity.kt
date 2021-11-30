@@ -1,5 +1,6 @@
 package com.example.duiban
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -47,8 +48,10 @@ class SendFriendRequestActivity : AppCompatActivity() {
                 }.addOnFailureListener {
                     Log.d("!!!", "failed to registered")
                 }
-
-
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+            finish()
         }
+
     }
 }
