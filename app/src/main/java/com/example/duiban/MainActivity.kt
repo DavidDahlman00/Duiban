@@ -66,7 +66,8 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-        db.collection("Friends").addSnapshotListener { value, error ->
+        db.collection("Friends").document(DataManager.currentUser.id).
+        collection("ListOfFriends").addSnapshotListener { value, error ->
             //WHEN CHANGES IN COLLECTION HAS HAPPENED CLEAR LIST
             DataManager.friendsList2.clear()
 
