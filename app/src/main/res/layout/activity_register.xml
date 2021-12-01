@@ -8,6 +8,7 @@
 
 
     <LinearLayout
+        android:id="@+id/register_linear_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@drawable/costum_app_background"
@@ -15,56 +16,84 @@
 
         <ImageView
             android:id="@+id/imageViewRegister"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:layout_gravity="center"
             android:layout_marginTop="30dp"
-            app:srcCompat="@drawable/ic_launcher_background" />
+            android:layout_marginBottom="20dp"
+            app:srcCompat="@mipmap/ic_launcher_foreground" />
 
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginVertical="20dp"
             android:layout_marginHorizontal="10dp"
+            android:layout_marginVertical="10dp"
             android:orientation="vertical">
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="80dp"
                 android:text="Name" />
 
-            <EditText
-                android:id="@+id/registertextUsername"
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="48dp"
-                android:layout_marginHorizontal="20dp"
-                android:background="@drawable/costum_button_background"
-                android:inputType="textPersonName"
-                android:text=""
-                android:textSize="24sp" />
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/imageView4"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    app:srcCompat="@drawable/ic_name_person" />
+
+                <EditText
+                    android:id="@+id/registertextUsername"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:layout_marginHorizontal="20dp"
+                    android:inputType="textPersonName"
+                    android:text=""
+                    android:textSize="24sp" />
+            </LinearLayout>
+
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginVertical="20dp"
             android:layout_marginHorizontal="10dp"
+            android:layout_marginVertical="10dp"
             android:orientation="vertical">
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="80dp"
                 android:text="Email" />
 
-            <EditText
-                android:id="@+id/registertextEmail"
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="48dp"
-                android:layout_marginHorizontal="20dp"
-                android:background="@drawable/costum_button_background"
-                android:inputType="textEmailAddress"
-                android:text=" "
-                android:textSize="24sp" />
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/imageView3"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    app:srcCompat="@drawable/ic_baseline_email_24" />
+
+                <EditText
+                    android:id="@+id/registertextEmail"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:layout_marginHorizontal="20dp"
+                    android:inputType="textEmailAddress"
+                    android:text=" "
+                    android:textSize="24sp" />
+
+            </LinearLayout>
 
 
         </LinearLayout>
@@ -72,14 +101,14 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginVertical="20dp"
             android:layout_marginHorizontal="10dp"
+            android:layout_marginVertical="10dp"
             android:orientation="vertical">
 
             <TextView
-
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="80dp"
                 android:text="Password" />
 
             <LinearLayout
@@ -87,30 +116,34 @@
                 android:layout_height="match_parent"
                 android:orientation="horizontal">
 
+                <ImageView
+                    android:id="@+id/imageeye"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    app:srcCompat="@drawable/ic_baseline_eye" />
+
                 <EditText
                     android:id="@+id/registereditTextTextPassword"
-                    android:layout_width="300dp"
+                    android:layout_width="match_parent"
                     android:layout_height="48dp"
                     android:layout_marginLeft="20dp"
-                    android:background="@drawable/costum_button_background"
+                    android:layout_marginRight="20dp"
                     android:ems="10"
                     android:inputType="textPassword"
                     android:textSize="24sp" />
 
-                <ImageView
-                    android:id="@+id/imageeye"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    app:srcCompat="@drawable/ic_baseline_eye" />
             </LinearLayout>
 
         </LinearLayout>
+
         <TextView
             android:id="@+id/errorRegister"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="#F44336"
+            android:layout_gravity="center"
+            android:gravity="center"
             android:text="" />
+
         <Button
             android:id="@+id/registercreatebutton"
             android:layout_width="wrap_content"
@@ -118,16 +151,12 @@
             android:layout_gravity="center"
             android:layout_marginVertical="30dp"
             android:background="@drawable/costum_button_background"
-            android:gravity="center|center_horizontal"
-            android:text="Login" />
 
-        <Button
-            android:id="@+id/gobackloginbutton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:background="@drawable/costum_button_background"
-            android:layout_marginVertical="20dp"
-            android:text="Back" />
+            android:gravity="center|center_horizontal"
+            android:text="Create"
+            app:icon="@drawable/costum_button"
+            app:iconTint="#00FFFFFF" />
+
+
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
