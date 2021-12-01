@@ -13,6 +13,7 @@ import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.example.duiban.models.DataManager
+import com.example.duiban.models.UserClass
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.storage.FirebaseStorage
 import kotlinx.android.synthetic.main.activity_profile.*
@@ -28,7 +29,6 @@ class ProfileActivity : AppCompatActivity() {
     }
 
     private var takenImage: Bitmap? = null
-    var selectedPhotoUri: Uri? = null
     lateinit var uuid: String
     val db = FirebaseFirestore.getInstance()
     private var https: String = ""
@@ -51,6 +51,10 @@ class ProfileActivity : AppCompatActivity() {
                     CAMERA_PERMISSION_CODE)
 
             }
+        }
+
+        update_profile_button.setOnClickListener {
+            updateUserToDatabase()
         }
     }
 
@@ -102,22 +106,16 @@ class ProfileActivity : AppCompatActivity() {
                 val link = it
                 Log.d("url", "$it")
                 https = link.toString()
-                Log.d("!!!!!", "BLABLAAAAAAA made cat $https")
+                Log.d("Photo Link", "$https")
                 val name = DataManager.currentUser.name
                 val id = DataManager.currentUser.id
                 val email = DataManager.currentUser.email
                 val password = DataManager.currentUser.password
+                val newUserDetails = UserClass(id= id, name = name, email = email, password = password ,profileImage = https)
 
-                //val newUserDetails = UserClass(id= DataManager.currentUser.id, name = name, price = newMealPrice, imageURL = https)
+                db.collection("Users").document(id).set(newUserDetails)
 
-          /*      Log.d("222", "createMeal  https = $https")
-                db.collection("TRUCK_MEALS").document(DataManager.currentOwner.truckUID)
-                    .collection("MEALS").document().set(meal)
-
-                Log.d("EditMealActivity", "to the database, good")
-
-                Log.d("!!!", "url on success  $url")
-*/
+                Log.d("USER UPDATE", "to the database, good")
             }
         }
     }
