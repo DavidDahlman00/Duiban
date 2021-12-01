@@ -24,6 +24,12 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        when(DataManager.mainActivityState) {
+            "homeFragment" -> switchFragment(homeFragment)
+            "chatListFragment" -> switchFragment(chatListFragment)
+            "contactFragment" -> switchFragment(contactFragment)
+
+        }
 
         db.collection("Messages").document(DataManager.currentUser.id).
         collection("ListOfMessages").addSnapshotListener { value, error ->
@@ -87,14 +93,14 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-        when(DataManager.mainActivityState) {
-            "chatListFragment" -> switchFragment(chatListFragment)
-            "contactFragment" -> switchFragment(contactFragment)
-            "homeFragment" -> switchFragment(homeFragment)
-        }
+
 
         main_navigation_bar.setOnItemSelectedListener { item ->
             when (item.itemId) {
+                R.id.home_link -> {
+                    switchFragment(homeFragment)
+                    DataManager.mainActivityState = "homeFragment"
+                }
                 R.id.chat_list_link -> {
                     switchFragment(chatListFragment)
                     DataManager.mainActivityState = "chatListFragment"
@@ -103,10 +109,7 @@ class MainActivity : AppCompatActivity() {
                     switchFragment(contactFragment)
                     DataManager.mainActivityState = "contactFragment"
                 }
-                R.id.home_link -> {
-                    switchFragment(homeFragment)
-                    DataManager.mainActivityState = "homeFragment"
-                }
+
             }
             true
         }

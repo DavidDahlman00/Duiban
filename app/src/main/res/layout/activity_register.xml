@@ -111,6 +111,7 @@
             android:layout_height="wrap_content"
             android:textColor="#F44336"
             android:text="" />
+
         <Button
             android:id="@+id/registercreatebutton"
             android:layout_width="wrap_content"
@@ -118,8 +119,11 @@
             android:layout_gravity="center"
             android:layout_marginVertical="30dp"
             android:background="@drawable/costum_button_background"
+            android:backgroundTint="#E91E63"
             android:gravity="center|center_horizontal"
-            android:text="Login" />
+            android:text="Login"
+            app:icon="@drawable/costum_button"
+            app:iconTint="#00FFFFFF" />
 
         <Button
             android:id="@+id/gobackloginbutton"
