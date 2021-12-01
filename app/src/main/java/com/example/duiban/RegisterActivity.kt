@@ -27,6 +27,7 @@ class RegisterActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_register)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         email = findViewById(R.id.registertextEmail)
         userName = findViewById(R.id.registertextUsername)
@@ -52,10 +53,6 @@ class RegisterActivity : AppCompatActivity() {
           }
         }
 
-        gobackloginbutton.setOnClickListener {
-            val intent = Intent(this, LoginActivity::class.java)
-            startActivity(intent)
-        }
     }
 
     @SuppressLint("SetTextI18n")

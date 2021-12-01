@@ -18,7 +18,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
-            app:srcCompat="@drawable/ic_launcher_background" />
+            app:srcCompat="@mipmap/ic_launcher_foreground" />
 
 
         <LinearLayout
@@ -38,7 +38,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
                 android:layout_marginHorizontal="20dp"
-                android:background="@drawable/costum_button_background"
                 android:inputType="textPersonName"
                 android:text=""
                 android:textSize="24sp" />
@@ -61,7 +60,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
                 android:layout_marginHorizontal="20dp"
-                android:background="@drawable/costum_button_background"
                 android:inputType="textEmailAddress"
                 android:text=" "
                 android:textSize="24sp" />
@@ -92,7 +90,6 @@
                     android:layout_width="300dp"
                     android:layout_height="48dp"
                     android:layout_marginLeft="20dp"
-                    android:background="@drawable/costum_button_background"
                     android:ems="10"
                     android:inputType="textPassword"
                     android:textSize="24sp" />
@@ -109,7 +106,7 @@
             android:id="@+id/errorRegister"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColor="#F44336"
+
             android:text="" />
 
         <Button
@@ -119,19 +116,12 @@
             android:layout_gravity="center"
             android:layout_marginVertical="30dp"
             android:background="@drawable/costum_button_background"
-            android:backgroundTint="#E91E63"
+
             android:gravity="center|center_horizontal"
             android:text="Login"
             app:icon="@drawable/costum_button"
             app:iconTint="#00FFFFFF" />
 
-        <Button
-            android:id="@+id/gobackloginbutton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:background="@drawable/costum_button_background"
-            android:layout_marginVertical="20dp"
-            android:text="Back" />
+
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
