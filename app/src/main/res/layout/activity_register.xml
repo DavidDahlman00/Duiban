@@ -8,6 +8,7 @@
 
 
     <LinearLayout
+        android:id="@+id/register_linear_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@drawable/costum_app_background"
@@ -17,22 +18,23 @@
             android:id="@+id/imageViewRegister"
             android:layout_width="200dp"
             android:layout_height="200dp"
-            android:layout_marginTop="30dp"
             android:layout_gravity="center"
+            android:layout_marginTop="30dp"
+            android:layout_marginBottom="20dp"
             app:srcCompat="@mipmap/ic_launcher_foreground" />
 
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginVertical="20dp"
             android:layout_marginHorizontal="10dp"
+            android:layout_marginVertical="10dp"
             android:orientation="vertical">
 
             <TextView
-                android:layout_marginLeft="80dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="80dp"
                 android:text="Name" />
 
             <LinearLayout
@@ -61,14 +63,14 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginVertical="20dp"
             android:layout_marginHorizontal="10dp"
+            android:layout_marginVertical="10dp"
             android:orientation="vertical">
 
             <TextView
-                android:layout_marginLeft="80dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="80dp"
                 android:text="Email" />
 
             <LinearLayout
@@ -99,14 +101,14 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginVertical="20dp"
             android:layout_marginHorizontal="10dp"
+            android:layout_marginVertical="10dp"
             android:orientation="vertical">
 
             <TextView
-                android:layout_marginLeft="80dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="80dp"
                 android:text="Password" />
 
             <LinearLayout
@@ -133,11 +135,13 @@
             </LinearLayout>
 
         </LinearLayout>
+
         <TextView
             android:id="@+id/errorRegister"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-
+            android:layout_gravity="center"
+            android:gravity="center"
             android:text="" />
 
         <Button

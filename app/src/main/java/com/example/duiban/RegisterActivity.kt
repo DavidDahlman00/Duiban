@@ -2,6 +2,7 @@ package com.example.duiban
 
 import android.annotation.SuppressLint
 import android.content.Intent
+import android.inputmethodservice.Keyboard
 import android.os.Bundle
 import android.text.method.HideReturnsTransformationMethod
 import android.text.method.PasswordTransformationMethod
@@ -14,6 +15,7 @@ import com.example.duiban.models.MessageClass
 import com.example.duiban.models.UserClass
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
+import kotlinx.android.synthetic.main.activity_login.*
 import kotlinx.android.synthetic.main.activity_register.*
 
 class RegisterActivity : AppCompatActivity() {
@@ -51,6 +53,10 @@ class RegisterActivity : AppCompatActivity() {
           }else{
               Toast.makeText(this@RegisterActivity, "test", Toast.LENGTH_SHORT).show()
           }
+        }
+
+        register_linear_layout.setOnClickListener {
+            Keyboard.KEYCODE_DELETE
         }
 
     }

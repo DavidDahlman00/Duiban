@@ -1,13 +1,16 @@
 package com.example.duiban
 
 import android.annotation.SuppressLint
+
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
+import android.inputmethodservice.Keyboard
 import android.os.Bundle
 import android.text.method.HideReturnsTransformationMethod
 import android.text.method.PasswordTransformationMethod
 import android.util.Log
+
 import android.widget.EditText
+import androidx.appcompat.app.AppCompatActivity
 import com.example.duiban.models.DataManager
 import com.example.duiban.models.UserClass
 import com.google.firebase.auth.FirebaseAuth
@@ -24,7 +27,10 @@ class LoginActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
         email = findViewById(R.id.logintextUseremail)
+        email.requestFocus()
         password = findViewById(R.id.editTextTextPassword)
+        password.requestFocus()
+
         imagelogineye.setOnClickListener {
             if (showPassword){
                 imagelogineye.setImageResource(R.drawable.ic_baseline_eye)
@@ -47,7 +53,14 @@ class LoginActivity : AppCompatActivity() {
             val intent = Intent(this, RegisterActivity::class.java)
             startActivity(intent)
         }
+
+        login_linearLayout.setOnClickListener {
+            Keyboard.KEYCODE_DELETE
+        }
     }
+
+
+
     @SuppressLint("SetTextI18n")
     private fun tryToLogin(): Boolean {
 
