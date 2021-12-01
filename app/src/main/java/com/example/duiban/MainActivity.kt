@@ -23,7 +23,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
+        switchFragment(chatListFragment)
         when(DataManager.mainActivityState) {
             "homeFragment" -> switchFragment(homeFragment)
             "chatListFragment" -> switchFragment(chatListFragment)

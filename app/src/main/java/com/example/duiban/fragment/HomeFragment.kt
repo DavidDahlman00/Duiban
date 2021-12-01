@@ -7,7 +7,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import com.example.duiban.AddFriendActivity
 import com.example.duiban.MainActivity
+import com.example.duiban.ProfileActivity
 import com.example.duiban.R
 import com.example.duiban.models.DataManager
 import kotlinx.android.synthetic.main.fragment_home.*
@@ -31,6 +33,10 @@ class HomeFragment : Fragment() {
 
         testText.text = DataManager.currentUser.name
 
+        view.profile_button.setOnClickListener {
+            val intent = Intent(view.context, ProfileActivity::class.java)
+            startActivity(intent)
+        }
 
         return view
     }
