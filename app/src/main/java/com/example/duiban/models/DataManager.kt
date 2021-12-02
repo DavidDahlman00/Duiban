@@ -7,5 +7,6 @@ object DataManager {
     var usersList:  MutableList<UserClass> = mutableListOf()
     var usersList2:  MutableList<UserClass> = mutableListOf()
     var messageList: MutableList<MessageClass> = mutableListOf()
+    var profileImageReference: MutableList<ProfileImageRefClass> = mutableListOf()
     var mainActivityState: String = "HomeFragment"
 }
