@@ -23,7 +23,9 @@ class ChatListAdapter: RecyclerView.Adapter<ChatListAdapter.ViewHolder>() {
 
     @SuppressLint("SetTextI18n")
     override fun onBindViewHolder(holder: ChatListAdapter.ViewHolder, position: Int) {
-        holder.itemImage.setImageResource(R.drawable.ic_launcher_foreground)
+
+        //val sortedDataList = DataManager.friendsList.sortedBy { it. }
+
         holder.itemName.text = DataManager.friendsList[position].name
         var message = ""
         if(DataManager.messageList.filter { (it.idFrom == DataManager.friendsList[position].id) or
@@ -41,9 +43,7 @@ class ChatListAdapter: RecyclerView.Adapter<ChatListAdapter.ViewHolder>() {
     }
 
     inner class ViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
-        var itemImage: ImageView = itemView.findViewById(R.id.contactImage)
         var itemName: TextView = itemView.findViewById(R.id.contactTextName)
-
         var itemMessage: TextView = itemView.findViewById(R.id.contactTextMessage)
 
         init {

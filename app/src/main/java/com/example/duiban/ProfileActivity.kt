@@ -19,7 +19,7 @@ import com.google.firebase.storage.FirebaseStorage
 import kotlinx.android.synthetic.main.activity_profile.*
 import java.io.ByteArrayOutputStream
 import java.util.*
-import java.util.jar.Manifest
+import com.squareup.picasso.Picasso
 
 class ProfileActivity : AppCompatActivity() {
 
@@ -37,6 +37,12 @@ class ProfileActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_profile)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
+
+        if (DataManager.currentUser.profileImage == ""){
+            profile_image.setImageResource(R.drawable.ic_baseline_photo_camera_24)
+        }else{
+            Picasso.get().load(DataManager.currentUser.profileImage).into(profile_image)
+        }
 
         profile_image.setOnClickListener {
             if (ContextCompat.checkSelfPermission(
