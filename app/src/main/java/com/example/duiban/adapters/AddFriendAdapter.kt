@@ -44,7 +44,7 @@ class AddFriendAdapter: RecyclerView.Adapter<AddFriendAdapter.ViewHolder>() {
             }
         }
         holder.itemName.text = DataManager.usersList2[position].name
-        holder.itemImage.setImageResource(R.drawable.oak_tree_silhouette)
+
     }
 
     override fun getItemCount(): Int {
