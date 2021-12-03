@@ -2,6 +2,7 @@ package com.example.duiban.adapters
 
 import android.annotation.SuppressLint
 import android.content.Intent
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,19 +13,17 @@ import com.example.duiban.ChatActivity
 import com.example.duiban.R
 import com.example.duiban.models.DataManager
 import com.example.duiban.models.MessageClass
+import com.example.duiban.models.UserClass
 import java.lang.NullPointerException
 
 class ChatListAdapter: RecyclerView.Adapter<ChatListAdapter.ViewHolder>() {
-   private  var latestMessageList = mutableListOf<MessageClass>()
+    private lateinit var localFriendList: List<UserClass>
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
     ): ChatListAdapter.ViewHolder {
        val v = LayoutInflater.from(parent.context).inflate(R.layout.item_chatlist, parent, false)
 
-     /*   for (index in 0..DataManager.friendsList.size-1){
-
-        }*/
 
         return ViewHolder(v)
     }
@@ -32,15 +31,18 @@ class ChatListAdapter: RecyclerView.Adapter<ChatListAdapter.ViewHolder>() {
     @SuppressLint("SetTextI18n")
     override fun onBindViewHolder(holder: ChatListAdapter.ViewHolder, position: Int) {
 
-
-
-        holder.itemName.text = DataManager.friendsList[position].name
+         localFriendList = DataManager.friendsList.filter { it ->
+            val userIt = it
+            DataManager.friendsList2.any { userIt.id == it.id }
+        }
+        Log.d("!!!FriendList", localFriendList.toString())
+        holder.itemName.text = localFriendList[position].name
         var message = ""
-        if(DataManager.messageList.filter { (it.idFrom == DataManager.friendsList[position].id) or
-                   (it.idTo == DataManager.friendsList[position].id)}.size > 0){
+        if(DataManager.messageList.filter { (it.idFrom == localFriendList[position].id) or
+                   (it.idTo == localFriendList[position].id)}.size > 0){
                        try {
-                           message = DataManager.messageList.filter { (it.idFrom == DataManager.friendsList[position].id) or
-                                   (it.idTo == DataManager.friendsList[position].id) }.sortedByDescending { it.time }[0].message
+                           message = DataManager.messageList.filter { (it.idFrom == localFriendList[position].id) or
+                                   (it.idTo == localFriendList[position].id) }.sortedByDescending { it.time }[0].message
                        }catch (e: NullPointerException){
                            message = ""
                        }
@@ -52,7 +54,7 @@ class ChatListAdapter: RecyclerView.Adapter<ChatListAdapter.ViewHolder>() {
     }
 
     override fun getItemCount(): Int {
-        return DataManager.friendsList.size
+        return DataManager.friendsList2.size    // can't use localFriendList because it isn't initialised yet.
     }
 
     inner class ViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
@@ -62,8 +64,8 @@ class ChatListAdapter: RecyclerView.Adapter<ChatListAdapter.ViewHolder>() {
         init {
             itemView.setOnClickListener {
                 val intent = Intent(itemView.context, ChatActivity::class.java)
-                intent.putExtra("friendId", DataManager.friendsList[position].id)
-                intent.putExtra("friendName", DataManager.friendsList[position].name)
+                intent.putExtra("friendId", localFriendList[position].id)
+                intent.putExtra("friendName", localFriendList[position].name)
                 itemView.context.startActivity(intent)
             }
         }
