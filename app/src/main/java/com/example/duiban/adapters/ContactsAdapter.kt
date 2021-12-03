@@ -1,5 +1,5 @@
 package com.example.duiban.adapters
-
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.util.Log
 import android.view.LayoutInflater
@@ -12,10 +12,9 @@ import com.example.duiban.ChatActivity
 import com.example.duiban.R
 import com.example.duiban.models.DataManager
 import com.example.duiban.models.FriendClass
-import com.example.duiban.models.ProfileImageRefClass
 import com.google.firebase.firestore.FirebaseFirestore
 import com.squareup.picasso.Picasso
-import kotlinx.android.synthetic.main.activity_send_friend_request.*
+
 
 class ContactsAdapter: RecyclerView.Adapter<ContactsAdapter.ViewHolder>() {
 
@@ -26,17 +25,19 @@ class ContactsAdapter: RecyclerView.Adapter<ContactsAdapter.ViewHolder>() {
         return ViewHolder(v)
     }
 
+    @SuppressLint("SetTextI18n")
     override fun onBindViewHolder(holder: ContactsAdapter.ViewHolder, position: Int) {
         holder.friendName = DataManager.friendsList2[position].name
         holder.friendId = DataManager.friendsList2[position].id
         holder.itemName.text = DataManager.friendsList2[position].name
 
 
-        val imageRef = DataManager.usersList.filter { it.id == DataManager.friendsList2[position].id}[0].profileImage
-        if (imageRef == ""){
+        val Ref = DataManager.usersList.filter { it.id == DataManager.friendsList2[position].id}
+
+        if ((Ref.isEmpty()) || (Ref[0].profileImage == "")){
             holder.itemImage.setImageResource(R.drawable.ic_name_person)
         }else{
-            Picasso.get().load(imageRef).into(holder.itemImage)
+            Picasso.get().load(Ref[0].profileImage).into(holder.itemImage)
         }
 
         holder.itemtesttext.text = DataManager.friendsList2[position].accepted_me.toString()
@@ -50,16 +51,16 @@ class ContactsAdapter: RecyclerView.Adapter<ContactsAdapter.ViewHolder>() {
         }
 
         if (DataManager.friendsList2[position].accepted_me){
-            holder.itemAcceptedButton.setVisibility(View.INVISIBLE);
-            holder.itemDeclineButton.setVisibility(View.INVISIBLE);
+            holder.itemAcceptedButton.visibility = View.INVISIBLE
+            holder.itemDeclineButton.visibility = View.INVISIBLE
             if(DataManager.friendsList2[position].accepted_contact){
                 holder.itemAcceptedStatus.text = ""
             }else{
                 holder.itemAcceptedStatus.text = "Wating for ${DataManager.friendsList2[position].name} to accept your request"
             }
         }else{
-            holder.itemAcceptedButton.setVisibility(View.VISIBLE);
-            holder.itemDeclineButton.setVisibility(View.VISIBLE);
+            holder.itemAcceptedButton.visibility = View.VISIBLE
+            holder.itemDeclineButton.visibility = View.VISIBLE
             holder.itemAcceptedStatus.text = "${DataManager.friendsList2[position].name} would like to add you as friend"
         }
 

@@ -9,9 +9,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.duiban.AddFriendActivity
-import com.example.duiban.LoginActivity
 import com.example.duiban.R
-import com.example.duiban.adapters.ChatListAdapter
 import com.example.duiban.adapters.ContactsAdapter
 import kotlinx.android.synthetic.main.fragment_contacts.view.*
 
@@ -39,9 +37,6 @@ class ContactsFragment : Fragment() {
             val intent = Intent(view.context, AddFriendActivity::class.java)
             startActivity(intent)
         }
-
         return view
     }
-
-
 }

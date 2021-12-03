@@ -8,13 +8,12 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.example.duiban.ChatActivity
 import com.example.duiban.R
 import com.example.duiban.SendFriendRequestActivity
 import com.example.duiban.models.DataManager
 import com.example.duiban.models.ProfileImageRefClass
 import com.squareup.picasso.Picasso
-import kotlinx.android.synthetic.main.activity_profile.*
+
 
 class AddFriendAdapter: RecyclerView.Adapter<AddFriendAdapter.ViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AddFriendAdapter.ViewHolder {

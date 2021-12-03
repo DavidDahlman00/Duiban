@@ -7,12 +7,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import com.example.duiban.AddFriendActivity
-import com.example.duiban.MainActivity
 import com.example.duiban.ProfileActivity
 import com.example.duiban.R
 import com.example.duiban.models.DataManager
-import kotlinx.android.synthetic.main.fragment_home.*
 import kotlinx.android.synthetic.main.fragment_home.view.*
 
 
@@ -37,8 +34,6 @@ class HomeFragment : Fragment() {
             val intent = Intent(view.context, ProfileActivity::class.java)
             startActivity(intent)
         }
-
         return view
     }
-
 }

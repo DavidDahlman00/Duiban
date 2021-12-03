@@ -42,6 +42,7 @@ class ProfileActivity : AppCompatActivity() {
             profile_image.setImageResource(R.drawable.ic_baseline_photo_camera_24)
         }else{
             Picasso.get().load(DataManager.currentUser.profileImage).into(profile_image)
+
         }
 
         profile_image.setOnClickListener {

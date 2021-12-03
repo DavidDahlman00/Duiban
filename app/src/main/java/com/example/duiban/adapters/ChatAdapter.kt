@@ -7,7 +7,6 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.duiban.R
 import com.example.duiban.models.DataManager
-import java.time.format.DateTimeFormatter
 
 class ChatAdapter(val friendId: String): RecyclerView.Adapter<ChatAdapter.ViewHolder>()  {
 
