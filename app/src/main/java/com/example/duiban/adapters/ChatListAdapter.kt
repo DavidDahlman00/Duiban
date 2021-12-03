@@ -32,9 +32,14 @@ class ChatListAdapter: RecyclerView.Adapter<ChatListAdapter.ViewHolder>() {
     override fun onBindViewHolder(holder: ChatListAdapter.ViewHolder, position: Int) {
 
          localFriendList = DataManager.friendsList.filter { it ->
-            val userIt = it
-            DataManager.friendsList2.any { userIt.id == it.id }
-        }
+            val firstIt = it
+            DataManager.friendsList2.any { firstIt.id == it.id }
+        }.sortedByDescending { it ->
+             val firstIt = it
+             DataManager.messageList.filter { (it.idFrom == firstIt.id) or
+                     (it.idTo == firstIt.id) }.sortedByDescending { it.time }[0].time
+         }
+
         Log.d("!!!FriendList", localFriendList.toString())
         holder.itemName.text = localFriendList[position].name
         var message = ""
