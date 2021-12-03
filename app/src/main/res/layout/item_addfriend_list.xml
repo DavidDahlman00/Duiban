@@ -9,8 +9,7 @@
         android:id="@+id/image_addfriend_View"
         android:layout_width="40dp"
         android:layout_height="40dp"
-        android:layout_weight="1"
-        tools:srcCompat="@tools:sample/avatars" />
+        android:layout_weight="1" />
 
     <TextView
         android:id="@+id/text_addfriend_name"

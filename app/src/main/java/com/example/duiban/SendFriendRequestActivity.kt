@@ -8,6 +8,7 @@ import com.example.duiban.models.DataManager
 import com.example.duiban.models.FriendClass
 import com.example.duiban.models.MessageClass
 import com.google.firebase.firestore.FirebaseFirestore
+import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_chat.*
 import kotlinx.android.synthetic.main.activity_send_friend_request.*
 
@@ -20,12 +21,20 @@ class SendFriendRequestActivity : AppCompatActivity() {
         setContentView(R.layout.activity_send_friend_request)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         send_friend_request_name.text = intent.getStringExtra("friendName")
+        val profileImageString: String= intent.getStringExtra("profileImage")!!
+        Log.d("!!!profile image send friendrequset", profileImageString)
+
+        if(profileImageString == ""){
+            send_friendrequest_image.setImageResource(R.drawable.ic_name_person)
+        }else{
+            Picasso.get().load(profileImageString).into(send_friendrequest_image)
+        }
 
         create_friend_request_button.setOnClickListener {
 
             val sendToName: String = intent.getStringExtra("friendName")!!
             val sendToId: String = intent.getStringExtra("friendId")!!
-           // val message: String =  message_textfield.text.toString()
+
             val currentTime: Long = System.currentTimeMillis()
 
 

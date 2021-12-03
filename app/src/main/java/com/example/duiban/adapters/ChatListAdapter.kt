@@ -11,25 +11,40 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.duiban.ChatActivity
 import com.example.duiban.R
 import com.example.duiban.models.DataManager
+import com.example.duiban.models.MessageClass
+import java.lang.NullPointerException
 
 class ChatListAdapter: RecyclerView.Adapter<ChatListAdapter.ViewHolder>() {
+   private  var latestMessageList = mutableListOf<MessageClass>()
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
     ): ChatListAdapter.ViewHolder {
        val v = LayoutInflater.from(parent.context).inflate(R.layout.item_chatlist, parent, false)
+
+     /*   for (index in 0..DataManager.friendsList.size-1){
+
+        }*/
+
         return ViewHolder(v)
     }
 
     @SuppressLint("SetTextI18n")
     override fun onBindViewHolder(holder: ChatListAdapter.ViewHolder, position: Int) {
-        holder.itemImage.setImageResource(R.drawable.ic_launcher_foreground)
+
+
+
         holder.itemName.text = DataManager.friendsList[position].name
         var message = ""
         if(DataManager.messageList.filter { (it.idFrom == DataManager.friendsList[position].id) or
                    (it.idTo == DataManager.friendsList[position].id)}.size > 0){
-          message = DataManager.messageList.filter { (it.idFrom == DataManager.friendsList[position].id) or
-                   (it.idTo == DataManager.friendsList[position].id) }.sortedByDescending { it.time }[0].message
+                       try {
+                           message = DataManager.messageList.filter { (it.idFrom == DataManager.friendsList[position].id) or
+                                   (it.idTo == DataManager.friendsList[position].id) }.sortedByDescending { it.time }[0].message
+                       }catch (e: NullPointerException){
+                           message = ""
+                       }
+
        }
 
         holder.itemMessage.text = message
@@ -41,9 +56,7 @@ class ChatListAdapter: RecyclerView.Adapter<ChatListAdapter.ViewHolder>() {
     }
 
     inner class ViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
-        var itemImage: ImageView = itemView.findViewById(R.id.contactImage)
         var itemName: TextView = itemView.findViewById(R.id.contactTextName)
-
         var itemMessage: TextView = itemView.findViewById(R.id.contactTextMessage)
 
         init {
