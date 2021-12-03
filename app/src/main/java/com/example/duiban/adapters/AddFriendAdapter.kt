@@ -40,6 +40,7 @@ class AddFriendAdapter: RecyclerView.Adapter<AddFriendAdapter.ViewHolder>() {
             else -> {
                 Picasso.get().load(DataManager.usersList2[position].profileImage).into(holder.itemImage)
                 val imageRef = ProfileImageRefClass(DataManager.usersList2[position].id, DataManager.usersList2[position].profileImage)
+
                 DataManager.profileImageReference.add(imageRef)
             }
         }

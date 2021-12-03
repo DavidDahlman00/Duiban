@@ -29,24 +29,7 @@ class AddFriendActivity : AppCompatActivity() {
         adapter = AddFriendAdapter()
         recyclerView.adapter = adapter
 
-        db.collection("Users").addSnapshotListener { value, error ->
-            //WHEN CHANGES IN COLLECTION HAS HAPPENED CLEAR LIST
-            DataManager.usersList.clear()
-            DataManager.usersList2.clear()
 
-            for (document in value!!) {
-                //ITEM TO OBJECT
-
-                val newItem = document.toObject(UserClass::class.java)
-                if ((newItem.id != DataManager.currentUser.id) && (!DataManager.friendsList2.any { it.id == newItem.id })){
-                    //ADD NEW ITEM TO LIST
-                    DataManager.usersList.add(newItem)
-                    DataManager.usersList2.add(newItem)
-                    Log.d("test get data","got data")
-                }
-            }
-            recyclerView.adapter!!.notifyDataSetChanged()
-        }
 
         searchContactView.setOnQueryTextListener(object : SearchView.OnQueryTextListener,
             android.widget.SearchView.OnQueryTextListener{

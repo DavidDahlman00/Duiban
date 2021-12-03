@@ -30,6 +30,24 @@ class MainActivity : AppCompatActivity() {
             "contactFragment" -> switchFragment(contactFragment)
 
         }
+        db.collection("Users").addSnapshotListener { value, error ->
+            //WHEN CHANGES IN COLLECTION HAS HAPPENED CLEAR LIST
+            DataManager.usersList.clear()
+            DataManager.usersList2.clear()
+
+            for (document in value!!) {
+                //ITEM TO OBJECT
+
+                val newItem = document.toObject(UserClass::class.java)
+                if ((newItem.id != DataManager.currentUser.id) && (!DataManager.friendsList2.any { it.id == newItem.id })){
+                    //ADD NEW ITEM TO LIST
+                    DataManager.usersList.add(newItem)
+                    DataManager.usersList2.add(newItem)
+                    Log.d("test get data","got data")
+                }
+            }
+        }
+
 
         db.collection("Messages").document(DataManager.currentUser.id).
         collection("ListOfMessages").addSnapshotListener { value, error ->
@@ -47,8 +65,6 @@ class MainActivity : AppCompatActivity() {
                   //  DataManager.messageList.add(newItem)
                     DataManager.messageList.add(newItem)
                 }
-
-
             }
 
         }
@@ -67,8 +83,6 @@ class MainActivity : AppCompatActivity() {
                     DataManager.friendsList.add(newItem)
                     Log.d("test get data","got data")
                 }
-
-
             }
         }
 

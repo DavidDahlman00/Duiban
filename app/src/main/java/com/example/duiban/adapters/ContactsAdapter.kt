@@ -12,7 +12,9 @@ import com.example.duiban.ChatActivity
 import com.example.duiban.R
 import com.example.duiban.models.DataManager
 import com.example.duiban.models.FriendClass
+import com.example.duiban.models.ProfileImageRefClass
 import com.google.firebase.firestore.FirebaseFirestore
+import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_send_friend_request.*
 
 class ContactsAdapter: RecyclerView.Adapter<ContactsAdapter.ViewHolder>() {
@@ -28,7 +30,14 @@ class ContactsAdapter: RecyclerView.Adapter<ContactsAdapter.ViewHolder>() {
         holder.friendName = DataManager.friendsList2[position].name
         holder.friendId = DataManager.friendsList2[position].id
         holder.itemName.text = DataManager.friendsList2[position].name
-        holder.itemImage.setImageResource(R.drawable.oak_tree_silhouette)
+
+
+        val imageRef = DataManager.usersList.filter { it.id == DataManager.friendsList2[position].id}[0].profileImage
+        if (imageRef == ""){
+            holder.itemImage.setImageResource(R.drawable.ic_name_person)
+        }else{
+            Picasso.get().load(imageRef).into(holder.itemImage)
+        }
 
         holder.itemtesttext.text = DataManager.friendsList2[position].accepted_me.toString()
 
