@@ -43,19 +43,24 @@ class ChatListAdapter: RecyclerView.Adapter<ChatListAdapter.ViewHolder>() {
         Log.d("!!!FriendList", localFriendList.toString())
         holder.itemName.text = localFriendList[position].name
         var message = ""
+        var message_time = ""
         if(DataManager.messageList.filter { (it.idFrom == localFriendList[position].id) or
                    (it.idTo == localFriendList[position].id)}.size > 0){
                        try {
-                           message = DataManager.messageList.filter { (it.idFrom == localFriendList[position].id) or
-                                   (it.idTo == localFriendList[position].id) }.sortedByDescending { it.time }[0].message
+                           val thisMessage = DataManager.messageList.filter { (it.idFrom == localFriendList[position].id) or
+                                   (it.idTo == localFriendList[position].id) }.sortedByDescending { it.time }[0]
+                           message = thisMessage.message
+                           val emptyMessageObject = MessageClass()
+                           message_time = emptyMessageObject.getDateTime(thisMessage.time)!!
                        }catch (e: NullPointerException){
                            message = ""
+                           message_time = "test result fail"
                        }
 
        }
 
         holder.itemMessage.text = message
-
+        holder.itemTime.text = message_time
     }
 
     override fun getItemCount(): Int {
@@ -65,6 +70,7 @@ class ChatListAdapter: RecyclerView.Adapter<ChatListAdapter.ViewHolder>() {
     inner class ViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
         var itemName: TextView = itemView.findViewById(R.id.contactTextName)
         var itemMessage: TextView = itemView.findViewById(R.id.contactTextMessage)
+        var itemTime: TextView = itemView.findViewById(R.id.contactTextTime)
 
         init {
             itemView.setOnClickListener {
