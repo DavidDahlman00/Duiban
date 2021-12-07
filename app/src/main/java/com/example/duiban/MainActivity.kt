@@ -1,5 +1,6 @@
 package com.example.duiban
 
+
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -12,6 +13,7 @@ import com.example.duiban.models.FriendClass
 import com.example.duiban.models.MessageClass
 import com.example.duiban.models.UserClass
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.messaging.FirebaseMessaging
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -24,12 +26,15 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         switchFragment(chatListFragment)
+
+        FirebaseMessaging.getInstance().subscribeToTopic("/topics/${DataManager.currentUser.id}")
         when(DataManager.mainActivityState) {
             "homeFragment" -> switchFragment(homeFragment)
             "chatListFragment" -> switchFragment(chatListFragment)
             "contactFragment" -> switchFragment(contactFragment)
 
         }
+
 
         db.collection("Messages").document(DataManager.currentUser.id).
         collection("ListOfMessages").addSnapshotListener { value, error ->
@@ -116,6 +121,7 @@ class MainActivity : AppCompatActivity() {
 
 
     }
+
 
     private fun switchFragment(fragment: Fragment) {
         val transaction = supportFragmentManager.beginTransaction()
