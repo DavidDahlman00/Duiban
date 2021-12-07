@@ -45,6 +45,12 @@
         <entry key="..\:/androidP/MyApplication/Duiban/app/src/main/res/layout/fragment_contacts.xml" value="0.12708333333333333" />
         <entry key="..\:/androidP/MyApplication/Duiban/app/src/main/res/layout/fragment_home.xml" value="0.12708333333333333" />
         <entry key="..\:/androidP/MyApplication/Duiban/app/src/main/res/menu/main_menu.xml" value="0.12708333333333333" />
+        <entry key="app/src/main/res/drawable/ic_baseline_email_24.xml" value="0.13148148148148148" />
+        <entry key="app/src/main/res/drawable/ic_baseline_eye.xml" value="0.13148148148148148" />
+        <entry key="app/src/main/res/drawable/ic_baseline_home_24.xml" value="0.13148148148148148" />
+        <entry key="app/src/main/res/drawable/ic_baseline_mark_chat_unread_24.xml" value="0.13148148148148148" />
+        <entry key="app/src/main/res/drawable/ic_name_person.xml" value="0.13148148148148148" />
+        <entry key="app/src/main/res/drawable/search_background.xml" value="0.13148148148148148" />
       </map>
     </option>
   </component>

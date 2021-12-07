@@ -7,14 +7,18 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.view.inputmethod.InputMethodManager
-import androidx.core.view.size
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.duiban.adapters.ChatAdapter
-import com.example.duiban.models.DataManager
-import com.example.duiban.models.MessageClass
+import com.example.duiban.models.*
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.gson.Gson
+import com.squareup.okhttp.Dispatcher
 import kotlinx.android.synthetic.main.activity_chat.*
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlin.coroutines.CoroutineContext
 
 class ChatActivity : AppCompatActivity() {
 
@@ -47,6 +51,10 @@ class ChatActivity : AppCompatActivity() {
             val messageObject = MessageClass(idFrom = DataManager.currentUser.id, idTo = sendToId,
                nameFrom = DataManager.currentUser.name, nameTo = sendToName,
                message =  message, time = currentTime)
+
+            PushNotification(NotificationData(title = DataManager.currentUser.name, message = message), to = sendToId)
+                .also { sendNotification(it) }
+
             db.collection("Messages").document(sendToId).
             collection("ListOfMessages").document().set(messageObject)
                 .addOnCompleteListener {
@@ -70,10 +78,23 @@ class ChatActivity : AppCompatActivity() {
 
     }
 
+
+
     private fun showSoftKeyboard(view: View) {
         if (view.requestFocus()) {
             val inputMethodManager: InputMethodManager = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
             inputMethodManager.showSoftInput(view, InputMethodManager.SHOW_IMPLICIT)
+        }
+    }
+
+    private fun sendNotification(notification: PushNotification) = CoroutineScope(Dispatchers.IO).launch{
+        try {
+            val response = RetrofitInstance.api.postNotification(notification)
+            if (response.isSuccessful){
+                Log.d("!!!", "Response: ${Gson().toJson(response)}")
+            }
+        } catch (e: Exception){
+            Log.e("!!!", e.toString())
         }
     }
 }
