@@ -26,7 +26,8 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         switchFragment(chatListFragment)
-        FirebaseMessaging.getInstance().subscribeToTopic(DataManager.currentUser.id)
+
+        FirebaseMessaging.getInstance().subscribeToTopic("/topics/${DataManager.currentUser.id}")
         when(DataManager.mainActivityState) {
             "homeFragment" -> switchFragment(homeFragment)
             "chatListFragment" -> switchFragment(chatListFragment)

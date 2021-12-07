@@ -52,8 +52,10 @@ class ChatActivity : AppCompatActivity() {
                nameFrom = DataManager.currentUser.name, nameTo = sendToName,
                message =  message, time = currentTime)
 
-            PushNotification(NotificationData(title = DataManager.currentUser.name, message = message), to = sendToId)
-                .also { sendNotification(it) }
+            val toNotification = "/topics/$sendToId"
+            PushNotification(NotificationData(title = DataManager.currentUser.name, message = message), to = toNotification)
+                .also { sendNotification(it)
+                Log.d("Notification!!!","Help")}
 
             db.collection("Messages").document(sendToId).
             collection("ListOfMessages").document().set(messageObject)
