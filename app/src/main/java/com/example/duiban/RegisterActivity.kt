@@ -104,8 +104,6 @@ class RegisterActivity : AppCompatActivity() {
                         Log.d("!!!", "failed to registerd")
                     }
 
-
-
                 val intent = Intent(this, MainActivity::class.java)
                 intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
                 intent.putExtra("user_id", userID)
@@ -119,6 +117,4 @@ class RegisterActivity : AppCompatActivity() {
             }
         }
     }
-
-
 }

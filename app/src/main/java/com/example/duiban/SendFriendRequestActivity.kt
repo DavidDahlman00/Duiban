@@ -6,10 +6,8 @@ import android.os.Bundle
 import android.util.Log
 import com.example.duiban.models.DataManager
 import com.example.duiban.models.FriendClass
-import com.example.duiban.models.MessageClass
 import com.google.firebase.firestore.FirebaseFirestore
 import com.squareup.picasso.Picasso
-import kotlinx.android.synthetic.main.activity_chat.*
 import kotlinx.android.synthetic.main.activity_send_friend_request.*
 
 class SendFriendRequestActivity : AppCompatActivity() {
@@ -61,6 +59,5 @@ class SendFriendRequestActivity : AppCompatActivity() {
             startActivity(intent)
             finish()
         }
-
     }
 }

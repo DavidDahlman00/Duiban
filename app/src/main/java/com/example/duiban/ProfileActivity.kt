@@ -4,7 +4,6 @@ import android.app.Activity
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.Bitmap
-import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.MediaStore
@@ -56,7 +55,6 @@ class ProfileActivity : AppCompatActivity() {
                 ActivityCompat.requestPermissions(
                     this, arrayOf(android.Manifest.permission.CAMERA),
                     CAMERA_PERMISSION_CODE)
-
             }
         }
 
@@ -91,7 +89,7 @@ class ProfileActivity : AppCompatActivity() {
         }
     }
 
-    fun updateUserToDatabase(){
+    private fun updateUserToDatabase(){
         uuid = UUID.randomUUID().toString()
         val baos = ByteArrayOutputStream()
         val storageRef = FirebaseStorage.getInstance()
@@ -113,7 +111,7 @@ class ProfileActivity : AppCompatActivity() {
                 val link = it
                 Log.d("url", "$it")
                 https = link.toString()
-                Log.d("Photo Link", "$https")
+                Log.d("Photo Link", https)
                 val name = DataManager.currentUser.name
                 val id = DataManager.currentUser.id
                 val email = DataManager.currentUser.email
@@ -126,5 +124,4 @@ class ProfileActivity : AppCompatActivity() {
             }
         }
     }
-
 }

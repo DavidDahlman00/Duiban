@@ -51,35 +51,24 @@ class MainActivity : AppCompatActivity() {
 
         db.collection("Messages").document(DataManager.currentUser.id).
         collection("ListOfMessages").addSnapshotListener { value, error ->
-            //WHEN CHANGES IN COLLECTION HAS HAPPENED CLEAR LIST
-
-            //val newMessageList :  MutableList<MessageClass> = mutableListOf()
             if (value != null) {
                 Log.d("message data length", value.size().toString())
                 DataManager.messageList.clear()
-                for (document in value!!) {
-                    //ITEM TO OBJECT
+                for (document in value) {
                     Log.d("message data", document.toString())
                     val newItem = document.toObject(MessageClass::class.java)
-                    //ADD NEW ITEM TO LIST
-                  //  DataManager.messageList.add(newItem)
                     DataManager.messageList.add(newItem)
                 }
             }
 
         }
 
-        db.collection("Users").addSnapshotListener { value, error ->
-            //WHEN CHANGES IN COLLECTION HAS HAPPENED CLEAR LIST
+        db.collection("Users").addSnapshotListener { value, _ ->
             DataManager.friendsList.clear()
 
-
             for (document in value!!) {
-                //ITEM TO OBJECT
-
                 val newItem = document.toObject(UserClass::class.java)
                 if (newItem.id != DataManager.currentUser.id){
-                    //ADD NEW ITEM TO LIST
                     DataManager.friendsList.add(newItem)
                     Log.d("test get data","got data")
                 }
@@ -88,26 +77,14 @@ class MainActivity : AppCompatActivity() {
 
         db.collection("Friends").document(DataManager.currentUser.id).
         collection("ListOfFriends").addSnapshotListener { value, error ->
-            //WHEN CHANGES IN COLLECTION HAS HAPPENED CLEAR LIST
-
             DataManager.friendsList2.clear()
 
             for (document in value!!) {
-                //ITEM TO OBJECT
-
                 val newItem = document.toObject(FriendClass::class.java)
-
-                    //ADD NEW ITEM TO LIST
-
-                    DataManager.friendsList2.add(newItem)
+                 DataManager.friendsList2.add(newItem)
                     Log.d("test get data","got data")
-
-
-
             }
         }
-
-
 
         main_navigation_bar.setOnItemSelectedListener { item ->
             when (item.itemId) {
@@ -123,12 +100,9 @@ class MainActivity : AppCompatActivity() {
                     switchFragment(contactFragment)
                     DataManager.mainActivityState = "contactFragment"
                 }
-
             }
             true
         }
-
-
     }
 
     private fun switchFragment(fragment: Fragment) {
