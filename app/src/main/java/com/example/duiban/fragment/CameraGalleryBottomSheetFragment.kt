@@ -10,7 +10,7 @@ import com.example.duiban.R
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import kotlinx.android.synthetic.main.bottomsheet_camera_gallery_fragment.*
 
-class Camera_Gallery_bottom_sheet_fragment: BottomSheetDialogFragment(){
+class CameraGalleryBottomSheetFragment: BottomSheetDialogFragment(){
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -24,14 +24,14 @@ class Camera_Gallery_bottom_sheet_fragment: BottomSheetDialogFragment(){
 
         imageView_camera_bottom_sheet.setOnClickListener {
             Log.d("!!!", "Camera clicked")
-            (activity as ProfileActivity?)!!.cameraFunction()
+            (activity as ProfileActivity?)!!.pickImageCamera()
             dismiss()
 
         }
 
         imageView_gallery_bottom_sheet.setOnClickListener {
             Log.d("!!!", "Gallery clicked")
-            (activity as ProfileActivity?)!!.galleryFunction()
+            (activity as ProfileActivity?)!!.pickImageGallery()
             dismiss()
         }
     }

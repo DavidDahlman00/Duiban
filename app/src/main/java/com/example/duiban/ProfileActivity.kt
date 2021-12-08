@@ -4,7 +4,6 @@ import android.app.Activity
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.Bitmap
-import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.MediaStore
@@ -12,7 +11,7 @@ import android.util.Log
 import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
-import com.example.duiban.fragment.Camera_Gallery_bottom_sheet_fragment
+import com.example.duiban.fragment.CameraGalleryBottomSheetFragment
 import com.example.duiban.models.DataManager
 import com.example.duiban.models.UserClass
 import com.google.firebase.firestore.FirebaseFirestore
@@ -27,11 +26,12 @@ class ProfileActivity : AppCompatActivity() {
     companion object {
         private const val CAMERA_PERMISSION_CODE = 1
         private const val CAMERA_REQUEST_CODE = 2
+        private const val IMAGE_REQUEST_CODE = 3
     }
 
     private var takenImage: Bitmap? = null
     lateinit var uuid: String
-    val db = FirebaseFirestore.getInstance()
+    private val db = FirebaseFirestore.getInstance()
     private var https: String = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -39,7 +39,7 @@ class ProfileActivity : AppCompatActivity() {
         setContentView(R.layout.activity_profile)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
-        val bottomSheet = Camera_Gallery_bottom_sheet_fragment()
+        val bottomSheet = CameraGalleryBottomSheetFragment()
 
         if (DataManager.currentUser.profileImage == ""){
             profile_image.setImageResource(R.drawable.ic_baseline_photo_camera_24)
@@ -77,13 +77,17 @@ class ProfileActivity : AppCompatActivity() {
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-        if(resultCode == Activity.RESULT_OK){
+        if((requestCode == CAMERA_REQUEST_CODE)&&(resultCode == Activity.RESULT_OK)){
              takenImage = data!!.extras!!.get("data") as Bitmap
+            profile_image.setImageBitmap(takenImage)
+        }
+        if((requestCode == IMAGE_REQUEST_CODE)&&(resultCode == Activity.RESULT_OK)){
+            takenImage = data!!.extras!!.get("data") as Bitmap
             profile_image.setImageBitmap(takenImage)
         }
     }
 
-    fun cameraFunction(){
+    fun pickImageCamera(){
         if (ContextCompat.checkSelfPermission(
                 this,
                 android.Manifest.permission.CAMERA
@@ -98,8 +102,10 @@ class ProfileActivity : AppCompatActivity() {
         }
     }
 
-    fun galleryFunction(){
-
+    fun pickImageGallery(){
+        val intent = Intent(Intent.ACTION_PICK)
+        intent.type = "image/*"
+        startActivityForResult(intent, IMAGE_REQUEST_CODE)
     }
 
     fun updateUserToDatabase(){
