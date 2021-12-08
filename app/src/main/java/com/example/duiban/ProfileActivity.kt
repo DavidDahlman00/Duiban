@@ -55,6 +55,7 @@ class ProfileActivity : AppCompatActivity() {
             updateUserToDatabase()
 
         }
+
     }
 
     override fun onRequestPermissionsResult(
