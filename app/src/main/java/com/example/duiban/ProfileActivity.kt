@@ -53,7 +53,7 @@ class ProfileActivity : AppCompatActivity() {
 
         update_profile_button.setOnClickListener {
             updateUserToDatabase()
-            bottomSheet.show(supportFragmentManager,"camera_gallery_bottom_sheet")
+
         }
     }
 
