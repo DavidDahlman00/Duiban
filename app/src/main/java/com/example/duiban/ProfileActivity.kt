@@ -12,6 +12,7 @@ import android.util.Log
 import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import com.example.duiban.fragment.Camera_Gallery_bottom_sheet_fragment
 import com.example.duiban.models.DataManager
 import com.example.duiban.models.UserClass
 import com.google.firebase.firestore.FirebaseFirestore
@@ -38,6 +39,8 @@ class ProfileActivity : AppCompatActivity() {
         setContentView(R.layout.activity_profile)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
+        val bottomSheet = Camera_Gallery_bottom_sheet_fragment()
+
         if (DataManager.currentUser.profileImage == ""){
             profile_image.setImageResource(R.drawable.ic_baseline_photo_camera_24)
         }else{
@@ -45,22 +48,12 @@ class ProfileActivity : AppCompatActivity() {
         }
 
         profile_image.setOnClickListener {
-            if (ContextCompat.checkSelfPermission(
-                    this,
-                    android.Manifest.permission.CAMERA
-                ) == PackageManager.PERMISSION_GRANTED){
-                    val intent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
-                startActivityForResult(intent, CAMERA_REQUEST_CODE)
-            }else{
-                ActivityCompat.requestPermissions(
-                    this, arrayOf(android.Manifest.permission.CAMERA),
-                    CAMERA_PERMISSION_CODE)
-
-            }
+            bottomSheet.show(supportFragmentManager,"camera_gallery_bottom_sheet")
         }
 
         update_profile_button.setOnClickListener {
             updateUserToDatabase()
+            bottomSheet.show(supportFragmentManager,"camera_gallery_bottom_sheet")
         }
     }
 
@@ -88,6 +81,25 @@ class ProfileActivity : AppCompatActivity() {
              takenImage = data!!.extras!!.get("data") as Bitmap
             profile_image.setImageBitmap(takenImage)
         }
+    }
+
+    fun cameraFunction(){
+        if (ContextCompat.checkSelfPermission(
+                this,
+                android.Manifest.permission.CAMERA
+            ) == PackageManager.PERMISSION_GRANTED){
+            val intent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
+            startActivityForResult(intent, CAMERA_REQUEST_CODE)
+        }else{
+            ActivityCompat.requestPermissions(
+                this, arrayOf(android.Manifest.permission.CAMERA),
+                CAMERA_PERMISSION_CODE)
+
+        }
+    }
+
+    fun galleryFunction(){
+
     }
 
     fun updateUserToDatabase(){
