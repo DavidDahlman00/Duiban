@@ -1,13 +1,18 @@
 package com.example.duiban.adapters
 
+import android.content.ClipData
+import android.content.ClipboardManager
+import android.content.Context
+import android.content.Context.CLIPBOARD_SERVICE
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.core.content.ContextCompat.getSystemService
 import androidx.recyclerview.widget.RecyclerView
 import com.example.duiban.R
 import com.example.duiban.models.DataManager
-import java.time.format.DateTimeFormatter
+
 
 class ChatAdapter(val friendId: String): RecyclerView.Adapter<ChatAdapter.ViewHolder>()  {
 
@@ -40,9 +45,20 @@ class ChatAdapter(val friendId: String): RecyclerView.Adapter<ChatAdapter.ViewHo
     }
 
     inner class ViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
+
         var itemNameYou: TextView = itemView.findViewById(R.id.message_sender1)
         var itemNameFriend: TextView = itemView.findViewById(R.id.message_sender2)
         var itemMessage: TextView = itemView.findViewById(R.id.message_text)
         var itemTime: TextView = itemView.findViewById(R.id.message_time)
+
+        init {
+            itemView.setOnClickListener {
+                var clipboard = itemView.context.getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
+                val clip = ClipData.newPlainText("textCopy",itemMessage.text)
+                clipboard.setPrimaryClip(clip)
+            }
+        }
     }
 }
+
+
