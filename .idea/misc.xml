@@ -45,14 +45,20 @@
         <entry key="..\:/androidP/MyApplication/Duiban/app/src/main/res/layout/fragment_contacts.xml" value="0.12708333333333333" />
         <entry key="..\:/androidP/MyApplication/Duiban/app/src/main/res/layout/fragment_home.xml" value="0.12708333333333333" />
         <entry key="..\:/androidP/MyApplication/Duiban/app/src/main/res/menu/main_menu.xml" value="0.12708333333333333" />
+        <entry key="app/src/main/res/drawable/costum_button.xml" value="0.1287037037037037" />
+        <entry key="app/src/main/res/drawable/costum_button_background.xml" value="0.1287037037037037" />
         <entry key="app/src/main/res/drawable/ic_baseline_email_24.xml" value="0.13148148148148148" />
         <entry key="app/src/main/res/drawable/ic_baseline_eye.xml" value="0.13148148148148148" />
         <entry key="app/src/main/res/drawable/ic_baseline_home_24.xml" value="0.13148148148148148" />
         <entry key="app/src/main/res/drawable/ic_baseline_mark_chat_unread_24.xml" value="0.13148148148148148" />
+        <entry key="app/src/main/res/drawable/ic_baseline_play_arrow_24.xml" value="0.1287037037037037" />
         <entry key="app/src/main/res/drawable/ic_name_person.xml" value="0.13148148148148148" />
         <entry key="app/src/main/res/drawable/search_background.xml" value="0.13148148148148148" />
+        <entry key="app/src/main/res/layout/activity_chat.xml" value="0.17" />
+        <entry key="app/src/main/res/layout/activity_send_friend_request.xml" value="0.11296859169199595" />
         <entry key="app/src/main/res/layout/bottomsheet_camera_gallery_fragment.xml" value="0.24791666666666667" />
         <entry key="app/src/main/res/layout/camera_gallery_bottomsheet_fragment.xml" value="0.15670289855072464" />
+        <entry key="app/src/main/res/layout/item_message.xml" value="0.11296859169199595" />
       </map>
     </option>
   </component>
