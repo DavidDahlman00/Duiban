@@ -14,6 +14,10 @@
         android:layout_height="wrap_content"
         android:text="string/hello_blank_home_fragment" />
 
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"></Space>
     <Button
         android:id="@+id/profile_button"
         android:layout_width="wrap_content"
@@ -22,7 +26,27 @@
         android:background="@drawable/costum_message_background"
         android:textColor="#FFF"
         android:gravity="center"
+
         android:text="Profile" />
 
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"></Space>
+    <Button
+        android:id="@+id/logout_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:background="@drawable/costum_message_background"
+        android:textColor="#FFF"
+        android:gravity="center"
+
+        android:text="LogOut" />
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"></Space>
 
 </LinearLayout>

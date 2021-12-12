@@ -7,11 +7,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import com.example.duiban.AddFriendActivity
-import com.example.duiban.MainActivity
-import com.example.duiban.ProfileActivity
-import com.example.duiban.R
+import com.example.duiban.*
 import com.example.duiban.models.DataManager
+import com.example.duiban.models.UserClass
 import kotlinx.android.synthetic.main.fragment_home.*
 import kotlinx.android.synthetic.main.fragment_home.view.*
 
@@ -36,6 +34,21 @@ class HomeFragment : Fragment() {
         view.profile_button.setOnClickListener {
             val intent = Intent(view.context, ProfileActivity::class.java)
             startActivity(intent)
+        }
+
+        view.logout_button.setOnClickListener {
+            DataManager.currentUser = UserClass()
+            DataManager.friendsList = mutableListOf()
+            DataManager.friendsList2 = mutableListOf()
+            DataManager.usersList = mutableListOf()
+            DataManager.usersList2 = mutableListOf()
+            DataManager.messageList = mutableListOf()
+            DataManager.profileImageReference = mutableListOf()
+            DataManager.mainActivityState = "HomeFragment"
+
+            val intent = Intent(view.context, LoginActivity::class.java)
+            startActivity(intent)
+
         }
 
         return view
