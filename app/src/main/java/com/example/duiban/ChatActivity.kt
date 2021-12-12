@@ -8,6 +8,8 @@ import android.util.Log
 import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
+import androidx.core.widget.doOnTextChanged
+
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.duiban.adapters.ChatAdapter
@@ -41,8 +43,12 @@ class ChatActivity : AppCompatActivity() {
         recyclerView.adapter = adapter
         recyclerView.smoothScrollToPosition(DataManager.messageList.filter { (it.idFrom == sendToId) or (it.idTo == sendToId)}.size);
 
-        message_textfield.setOnQueryTextListener{
-
+        message_textfield.doOnTextChanged { text, start, before, count ->
+            if (text == ""){
+                send_message_button.setImageResource(R.drawable.ic_baseline_mic_24)
+            }else{
+                send_message_button.setImageResource(R.drawable.ic_baseline_play_arrow_24)
+            }
         }
 
         send_message_button.setOnClickListener {
@@ -106,6 +112,4 @@ class ChatActivity : AppCompatActivity() {
     }
 }
 
-private fun EditText.setOnQueryTextListener(function: () -> Unit) {
 
-}
