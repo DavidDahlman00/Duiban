@@ -44,6 +44,7 @@ class ChatActivity : AppCompatActivity() {
         adapter = ChatAdapter(sendToId)
         recyclerView.adapter = adapter
         recyclerView.smoothScrollToPosition(DataManager.messageList.filter { (it.idFrom == sendToId) or (it.idTo == sendToId)}.size);
+        send_audio_button.visibility = View.INVISIBLE
 
         message_textfield.doOnTextChanged { text, _, _, _ ->
             if (text == ""){
@@ -52,6 +53,7 @@ class ChatActivity : AppCompatActivity() {
             }else{
                 send_message_button.setImageResource(R.drawable.ic_baseline_play_arrow_24)
                 audioTextStatus = "text"
+                send_audio_button.visibility = View.INVISIBLE
             }
         }
 
@@ -59,8 +61,12 @@ class ChatActivity : AppCompatActivity() {
             override fun onTouch(v: View?, event: MotionEvent?): Boolean {
                 if(audioTextStatus == "audio"){
                     when (event?.action) {
-                        MotionEvent.ACTION_DOWN -> {Log.d("!!!","press down")}
-                        MotionEvent.ACTION_UP -> {Log.d("!!!","press up")}
+                        MotionEvent.ACTION_DOWN -> {
+
+                            Log.d("!!!","press down")}
+                        MotionEvent.ACTION_UP -> {
+                            send_audio_button.visibility = View.VISIBLE
+                            Log.d("!!!","press up")}
                     }
                 }
                 return v?.onTouchEvent(event) ?: true

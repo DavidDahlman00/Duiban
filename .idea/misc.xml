@@ -55,6 +55,7 @@
         <entry key="app/src/main/res/drawable/ic_name_person.xml" value="0.13148148148148148" />
         <entry key="app/src/main/res/drawable/search_background.xml" value="0.13148148148148148" />
         <entry key="app/src/main/res/layout/activity_chat.xml" value="0.17" />
+        <entry key="app/src/main/res/layout/activity_login.xml" value="0.12056737588652482" />
         <entry key="app/src/main/res/layout/activity_send_friend_request.xml" value="0.11296859169199595" />
         <entry key="app/src/main/res/layout/bottomsheet_camera_gallery_fragment.xml" value="0.24791666666666667" />
         <entry key="app/src/main/res/layout/camera_gallery_bottomsheet_fragment.xml" value="0.15670289855072464" />

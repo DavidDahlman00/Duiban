@@ -44,8 +44,10 @@ class ChatListAdapter: RecyclerView.Adapter<ChatListAdapter.ViewHolder>() {
         holder.itemName.text = localFriendList[position].name
         var message = ""
         var message_time = ""
-        if(DataManager.messageList.filter { (it.idFrom == localFriendList[position].id) or
-                   (it.idTo == localFriendList[position].id)}.size > 0){
+        if(DataManager.messageList.filter {
+                (it.idFrom == localFriendList[position].id) or
+                        (it.idTo == localFriendList[position].id)
+            }.isNotEmpty()){
                        try {
                            val thisMessage = DataManager.messageList.filter { (it.idFrom == localFriendList[position].id) or
                                    (it.idTo == localFriendList[position].id) }.sortedByDescending { it.time }[0]
